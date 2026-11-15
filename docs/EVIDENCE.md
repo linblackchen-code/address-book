@@ -1,0 +1,46 @@
+# 截图与提交材料索引
+
+## 已生成的前端材料
+
+图片中的黄色提示明确标注演示模式或 HTTP 测试桩，全部为虚构数据。
+
+| 文件 | 内容 | 用途 |
+| --- | --- | --- |
+| screenshots/01-demo-desktop.png | 桌面主页 | 页面设计 |
+| screenshots/02-demo-favorites.png | 特别关注筛选 | 收藏交互 |
+| screenshots/03-demo-search-empty.png | 无匹配联系人 | 搜索与空状态 |
+| screenshots/04-demo-multiple-methods.png | 多电话、邮箱动态表单 | 多联系方式 |
+| screenshots/05-demo-excel-boundary.png | 演示模式拒绝假装导出成功 | 当前完成边界 |
+| screenshots/06-demo-mobile.png | 手机完整页面 | 响应式设计 |
+| screenshots/07-demo-mobile-form.png | 手机表单 | 手机适配 |
+| screenshots/08-api-unavailable.png | 后端不可用 | 异常处理 |
+| screenshots/09-contract-import-feedback.png | 测试桩导入反馈 | 仅证明前端反馈，联调后替换 |
+| videos/frontend-demo.webm | 页面、筛选、增删改、多联系方式及边界提示 | 前端阶段演示，不能替代完整项目视频 |
+| fixtures/contacts-template.xlsx | 有效 Excel 工作簿 | 格式建议夹具，非后端导出结果 |
+
+![桌面演示](screenshots/01-demo-desktop.png)
+
+## 最终必须补齐
+
+| 负责人 | 材料 | 要求 |
+| --- | --- | --- |
+| 前端 | 真实 API 页面截图 | 连接实际后端，不能以模拟截图证明持久化 |
+| 后端 | 数据结构、接口和运行说明 | 确认并落实 API_CONTRACT.md |
+| 后端 | Excel 导入导出证据 | 实际服务往返，保留同类型多值、前导零及全部字段 |
+| 共同 | 完整运行视频 | 前后端实际运行、持久化、真正导入导出与错误反馈 |
+| 各人 | GitHub 提交历史截图及次数 | GitHub Commits 页，区分各人真实记录 |
+| 各人 | PSP、个人工作和反思 | 实际填写，不编造时间 |
+| 共同 | PR 与最终 Release | 提供可访问链接 |
+| 后端/部署负责人 | 公网地址（选做） | localhost 不算 |
+
+## 最终完整视频建议脚本
+
+1. 展示仓库、真实 API 页面与技术栈。
+2. 新建联系人，添加两个电话和一个邮箱，保存、刷新，验证数据保留。
+3. 编辑备注，收藏，切换特别关注，搜索联系方式。
+4. 导出全部联系人，打开 Excel，展示每人一行、每类信息一列及多值。
+5. 使用正确格式文件导入，展示新增联系人及完整信息。
+6. 展示无效文件或无效字段的反馈，展示手机布局。
+7. 后端重启后再次读取以验证持久化；如有部署，展示公网地址。
+
+使用虚构数据。博客发布时上传图片和视频，仓库相对图片路径不会自动转为 CSDN 图片链接。

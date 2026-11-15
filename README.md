@@ -4,7 +4,21 @@ Software Engineering (FZU–MU) 极限编程作业。
 
 ## 当前状态
 
-仓库目前完成目录及协作文档初始化，尚未实现业务功能，技术栈待两位成员确定。
+前端已使用原生 HTML/CSS/JavaScript 和 fetch 实现，包含显式演示模式及 HTTP 接口桩验证。后端尚待成员实现和联调，接口建议稿需双方确认。
+
+## 前端预览与协作材料
+
+在项目根目录运行 `python -m http.server 8080 --bind 127.0.0.1`，或双击 `start-frontend.cmd`。
+
+- 真实接口模式：http://127.0.0.1:8080/frontend/
+- 前端演示模式：http://127.0.0.1:8080/frontend/?demo=1
+- [前端运行说明](frontend/README.md)
+- [接口约定建议稿](docs/API_CONTRACT.md)
+- [博客协作框架：每节注明前端/后端所需材料](docs/BLOG_COLLABORATION_TEMPLATE.md)
+- [截图、视频与最终补交材料](docs/EVIDENCE.md)
+- [前端验证记录](docs/FRONTEND_VERIFICATION.md)
+
+演示数据为虚构样例，只有本次页面内存有效，不代表数据库持久化。Excel 的前端 HTTP 流程已检查，真实 Excel 处理、数据库和最终完整运行视频仍需后端完成后共同验收。
 
 ## 目录
 
@@ -29,7 +43,7 @@ git clone https://github.com/linblackchen-code/address-book.git
 cd address-book
 ```
 
-安装依赖、环境变量、运行及构建命令将在技术栈确定和代码实现后补充。
+前端无需安装依赖或构建。后端安装、数据库初始化及运行命令待后端成员补充。
 
 ## 协作
 
