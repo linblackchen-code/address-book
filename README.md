@@ -8,6 +8,8 @@ Software Engineering (FZU–MU) 极限编程作业。
 
 ## 前端预览与协作材料
 
+**后端成员从 [后端接入与材料交接](docs/BACKEND_HANDOFF.md) 开始。** 当前完整前端在 `feat/frontend` 分支，[PR #1](https://github.com/linblackchen-code/address-book/pull/1) 尚待合并；获取代码、分支协作、接口开发与材料提交均在该文档中说明。
+
 在项目根目录运行 `python -m http.server 8080 --bind 127.0.0.1`，或双击 `start-frontend.cmd`。
 
 - 真实接口模式：http://127.0.0.1:8080/frontend/
