@@ -265,5 +265,4 @@ $("#add-method").addEventListener("click", () => { addMethod(); $("#method-field
 document.querySelectorAll("[data-close]").forEach(button => button.addEventListener("click", closeEditor));
 $("#retry").addEventListener("click", () => loadContacts());
 $("#demo-banner").hidden = !DEMO_MODE;
-$("#connection-label").textContent = DEMO_MODE ? "前端演示 · 未连接后端" : "真实接口模式 · API 数据";
 await loadContacts();

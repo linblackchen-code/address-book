@@ -170,7 +170,6 @@ function pass(message) { results.push(message); console.log(`PASS ${message}`); 
     await page.evaluate(() => {
       const banner = document.querySelector('#demo-banner'); banner.hidden = false;
       banner.textContent = '接口契约测试 · 请求由浏览器测试桩拦截；不是后端联调或真实 Excel 解析结果。';
-      document.querySelector('#connection-label').textContent = 'HTTP 测试桩 · 非真实后端';
     });
     await page.screenshot({ path: path.join(evidence, '09-contract-import-feedback.png'), fullPage: true });
     await page.locator('#search').fill('接口测试');
