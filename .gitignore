@@ -19,6 +19,7 @@ obj/
 *.db
 *.sqlite
 *.sqlite3
+backend/data/
 *.log
 
 # Editor and OS files
