@@ -15,10 +15,15 @@
 | screenshots/07-demo-mobile-form.png | 手机表单 | 手机适配 |
 | screenshots/08-api-unavailable.png | 后端不可用 | 异常处理 |
 | screenshots/09-contract-import-feedback.png | 测试桩导入反馈 | 仅证明前端反馈，联调后替换 |
+| screenshots/10-github-frontend-commits.png | GitHub PR #1 真实页面截图，显示前三阶段 3 次提交 | 提交历史证据；后续材料归档提交另计，最终提交前更新双方截图 |
 | videos/frontend-demo.webm | 页面、筛选、增删改、多联系方式及边界提示 | 前端阶段演示，不能替代完整项目视频 |
 | fixtures/contacts-template.xlsx | 有效 Excel 工作簿 | 格式建议夹具，非后端导出结果 |
 
 ![桌面演示](screenshots/01-demo-desktop.png)
+
+前端 PR：[PR #1](https://github.com/linblackchen-code/address-book/pull/1)，开发分支 feat/frontend。页面截图取自真实 GitHub，未重绘或修改内容。
+
+前三阶段：eaf9f21 页面及接口、9de73fe 交互实现、f939cc1 验证及博客框架。后续截图归档为独立提交；个人统计以最终 GitHub 记录为准。
 
 ## 最终必须补齐
 

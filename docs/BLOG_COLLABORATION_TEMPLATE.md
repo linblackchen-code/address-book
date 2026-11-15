@@ -31,7 +31,7 @@
 - 项目：[address-book](https://github.com/linblackchen-code/address-book)
 - 代码规范：[CODING_STANDARDS.md](https://github.com/linblackchen-code/address-book/blob/main/docs/CODING_STANDARDS.md)
 - 公网地址：【有则填写，没有则如实说明未完成】
-- 前端 PR：【填写真实链接】
+- 前端 PR：[PR #1](https://github.com/linblackchen-code/address-book/pull/1)，分支 feat/frontend
 - 最终 Release：【发布后填写】
 
 | 要求 | 当前阶段 | 最终证据 |
@@ -69,6 +69,16 @@ CSDN 发布时应上传图片并替换地址。
 | 【后端姓名】 | 后端 | 【按 GitHub 统计】 | 【链接】 |
 
 【插入 GitHub Commits 页面截图，覆盖双方记录。】
+已提供前端前三阶段的真实页面截图；这是截取时的 3 次提交，后续证据归档提交另计，最终发布前更新双方统计与截图。
+
+![前端 GitHub 三阶段提交记录](screenshots/10-github-frontend-commits.png)
+
+| 阶段 | 前端实际提交 |
+| --- | --- |
+| 页面及接口约定 | [eaf9f21](https://github.com/linblackchen-code/address-book/commit/eaf9f21) |
+| 交互实现 | [9de73fe](https://github.com/linblackchen-code/address-book/commit/9de73fe) |
+| 验证及博客框架 | [f939cc1](https://github.com/linblackchen-code/address-book/commit/f939cc1) |
+
 仓库总提交数不等于个人编码次数；初始化文档、合并与功能提交应如实区分。
 描述实际分支/PR 流程，前端本次在 feat/frontend 开发。课程起始仓库的 Fork 要求需要另行核实，不把新建仓库写成已 Fork。
 
