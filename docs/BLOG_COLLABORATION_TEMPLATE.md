@@ -37,9 +37,9 @@
 
 页面、收藏、多联系方式、真实 Excel 导入导出均已完成，已部署至阿里云。数据由 SQLite 持久化，支持手机布局。
 
-![云端页面](submission/01-cloud-desktop.png)
+![新版通讯录首页](submission/01-new-desktop.jpg)
 
-图片通过 SSH 隧道访问同一真实云服务采集，未使用模拟响应；访问与数据范围见 [材料说明](submission/README.md)。
+新版界面截图来自使用虚构联系人的本地联调。截图来源见 [材料说明](submission/README.md)。
 
 ## 2. 技术栈及模块
 
@@ -76,45 +76,45 @@
 **【前端】** 卡片、统计、搜索、弹窗、确认删除、加载和错误反馈；使用 textContent 展示用户内容。
 **【后端】** 联系人增删改查、事务与数据存储。双方可结合自己参与的代码补充一段解释。
 
-![手机页面](submission/06-cloud-mobile.png)
+![手机页面](submission/06-new-mobile.jpg)
 
 ### 4.2 收藏联系人
 
 **【前端】** 星标和特别关注筛选，成功后重新读取列表。
 **【后端】** PATCH 设置明确布尔状态，保存到数据库，重复设置同一状态不会翻转。
 
-![收藏筛选](submission/02-cloud-favorites.png)
+![收藏筛选](submission/02-new-favorites.jpg)
 
 ### 4.3 多种联系方式
 
 **【前端】** 动态增加/移除联系方式，支持同类型多项和基础校验。
 **【后端】** 一对多模型、字段校验及有序保存。
 
-![多联系方式](submission/03-multiple-methods.png)
+![多联系方式](submission/03-new-multiple-methods.jpg)
 
 ### 4.4 Excel 导入导出
 
 **【前端】** .xlsx 与大小检查、FormData 上传、结果反馈和 Blob 下载。
 **【后端】** 工作簿解析生成、整批校验、重复记录跳过。每个联系人一行、每类信息一列；多值使用 JSON 字符串数组，保留前导零和 +。
 
-![实际导出内容预览](submission/07-excel-content.png)
+![在 Microsoft Excel 打开的实际导出工作簿](submission/07-excel-export-screenshot.png)
 
-上图为从真实导出提取的虚构样例数据预览，不是 Excel 软件截图。[样例文件](submission/contacts-sample.xlsx)可下载打开。
+上图是在 Microsoft Excel 中打开实际导出工作簿的截图，使用虚构联系人。[样例文件](submission/contacts-sample.xlsx)可下载打开。
 
-![云端导入结果](submission/04-cloud-import.png)
+![新版界面显示 Excel 导入成功](submission/04-new-import-success.jpg)
 
 ### 4.5 异常处理
 
 **【前端】** 可读错误提示和按钮恢复。
 **【后端】** 独立验证实际文件内容和字段，无效批次拒绝，避免部分写入。
 
-![损坏文件错误反馈](submission/05-cloud-invalid-file.png)
+![损坏文件错误反馈](submission/05-new-invalid-workbook.jpg)
 
 ## 5. 验证与视频
 
 **【共同】** 上传并检查视频链接、清晰度和完整流程。
 
-- [真实云服务操作录像](submission/cloud-walkthrough.webm)：通过 SSH 隧道访问同一云服务，未使用接口桩，无配音。
+- [新版通讯录运行演示](submission/address-book-demo.mp4)使用阿里云上的真实服务。
 - [本地真实联调录像](integration/full-stack-demo.webm)：包含真实服务重启后持久化验证。
 - [公网验收](cloud/VERIFICATION.md)。
 - 后端自动回归 6 项通过；浏览器覆盖新增、编辑、删除、收藏、Excel、错误和手机布局。

@@ -10,9 +10,9 @@ Software Engineering (FZU–MU) 极限编程作业。团队 **BLGNB**：林俊�
 
 ## 作业提交入口
 
-**先看 [林俊晨前端博客草稿](docs/BLOG_FRONTEND_LIN_JUNCHEN.md)**。姓名、团队、分工、前端工作、个人总结和明确标注的回顾估算 PSP 已补齐。
+[林俊晨的前端博客](docs/BLOG_FRONTEND_LIN_JUNCHEN.md) · [陈子元的后端博客](docs/BLOG_BACKEND_CHEN_ZIYUAN.md)
 
-[最终提交指南](docs/SUBMISSION_GUIDE.md) · [陈子元需要补充的材料](docs/TEAMMATE_MATERIALS.md) · [通用博客框架](docs/BLOG_COLLABORATION_TEMPLATE.md)。
+[最终提交指南](docs/SUBMISSION_GUIDE.md) · [通用博客框架](docs/BLOG_COLLABORATION_TEMPLATE.md)。
 
 | 材料 | 入口 |
 | --- | --- |

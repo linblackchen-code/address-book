@@ -100,9 +100,9 @@
 
 Excel 中每个联系人占一行、每类信息占一列，同类多个联系方式使用 JSON 字符串数组保存，保留电话前导零、+ 和中文。导出包含全部联系人，不受页面当前搜索条件限制。
 
-![实际导出工作簿的内容预览](submission/07-new-excel-export.jpg)
+![在 Microsoft Excel 打开的实际导出工作簿](submission/07-excel-export-screenshot.png)
 
-上图是从真实下载的工作簿提取虚构样例后的内容预览，并非 Excel 软件窗口。[Excel 样例](submission/contacts-sample.xlsx)可下载打开。
+上图是在 Microsoft Excel 中打开实际导出工作簿的截图，使用虚构联系人。[Excel 样例](submission/contacts-sample.xlsx)可下载打开。
 
 ![新版界面显示 Excel 导入成功](submission/04-new-import-success.jpg)
 

@@ -1,37 +1,30 @@
-# 最终截图与录像材料
+# 截图与运行录像
 
-采集日期：2026-11-16。优先使用本目录，早期演示图片保留在 docs/screenshots/ 作为历史。
+新版界面截图来自本地真实后端，使用虚构联系人。运行录像录自阿里云上的新版页面。GitHub 提交历史图对应各博客注明的统计快照。 [在线通讯录](http://47.114.63.69/address-book/)
 
-## 来源与范围
+[前端博客](../BLOG_FRONTEND_LIN_JUNCHEN.md) · [后端博客](../BLOG_BACKEND_CHEN_ZIYUAN.md)
 
-01–06 是真实云服务的浏览器界面，使用虚构验收联系人。因为本机自动浏览器直接访问公网 HTTP 受限，浏览器通过 SSH 隧道 http://127.0.0.2:19080/address-book/ 访问服务器同一 Nginx 和 API，未使用测试桩或模拟响应。公网地址为 http://47.114.63.69/address-book/。
-采集时仅筛选自身创建的样例；完成后仅清理这些记录，保留服务器已有联系人。
+## 图片
 
-07 从实际下载的 .xlsx 提取虚构样例并预览，不是 Excel 软件窗口截图。08–10 是真实 GitHub 页面截图，没有重绘。
+| 文件 | 展示内容 |
+| --- | --- |
+| [新版桌面首页](01-new-desktop.jpg) | 联系人、统计及操作入口 |
+| [特别关注列表](02-new-favorites.jpg) | 收藏筛选 |
+| [多联系方式表单](03-new-multiple-methods.jpg) | 同一联系人的两个电话和一个邮箱 |
+| [Excel 导入成功](04-new-import-success.jpg) | 成功提示及新增联系人 |
+| [损坏工作簿的错误提示](05-new-invalid-workbook.jpg) | 无法读取文件时的页面反馈 |
+| [新版手机尺寸预览](06-new-mobile.jpg) | 390 像素宽度下的响应式布局 |
+| [Excel 实际导出截图](07-excel-export-screenshot.png) | 在 Microsoft Excel 打开工作簿，可见多值和电话号码前导零 |
+| [前端博客的提交历史截图](08-github-main-commits.png) | 主分支快照 `62dcd43` |
+| [前端 PR #1](09-github-frontend-pr.png) | 合并记录 |
+| [前端博客引用的后端 PR #2](10-github-backend-pr.png) | 合并记录 |
+| [后端博客的提交历史截图](08-github-main-commits-latest.jpg) | 主分支快照 `ce0bdcf` |
+| [后端博客引用的后端 PR #2](10-github-backend-pr-latest.jpg) | 合并记录 |
+| [Swagger 接口列表](11-swagger-api.jpg) | 本地后端接口 |
 
-## 图片清单
+## 视频和工作簿
 
-| 文件 | 展示内容 | 博客位置 |
-| --- | --- | --- |
-| [01-cloud-desktop.png](01-cloud-desktop.png) | 云端联系人、统计、电话/邮箱/社交/地址 | 项目概览和页面设计 |
-| [02-cloud-favorites.png](02-cloud-favorites.png) | 特别关注筛选 | 收藏功能 |
-| [03-multiple-methods.png](03-multiple-methods.png) | 两个电话和一个邮箱的编辑表单 | 多联系方式 |
-| [04-cloud-import.png](04-cloud-import.png) | 实际 Excel 导入成功反馈 | 导入功能 |
-| [05-cloud-invalid-file.png](05-cloud-invalid-file.png) | 损坏工作簿的后端错误反馈 | 异常处理 |
-| [06-cloud-mobile.png](06-cloud-mobile.png) | 真实云服务手机布局 | 响应式设计 |
-| [07-excel-content.png](07-excel-content.png) | 实际导出内容的虚构样例预览 | 每人一行、每类信息一列、多值和前导零 |
-| [08-github-main-commits.png](08-github-main-commits.png) | main 分支提交历史快照 | Git 协作 |
-| [09-github-frontend-pr.png](09-github-frontend-pr.png) | 前端 PR #1 已合并 | 前端贡献与协作 |
-| [10-github-backend-pr.png](10-github-backend-pr.png) | 后端 PR #2 已合并 | 后端贡献与协作 |
-
-![云端桌面](01-cloud-desktop.png)
-
-## 视频和文件
-
-- [cloud-walkthrough.webm](cloud-walkthrough.webm)：真实云服务操作，包含收藏筛选、编辑、多联系方式、页面新建、实际导出/导入、重复处理、损坏文件、删除及手机布局。无配音，通过 SSH 隧道操作；发布前自行观看，可按课程展示需求重录带解说版本。
-- [本地真实联调录像](../integration/full-stack-demo.webm)：补充实际服务重启后的持久化过程。
-- [contacts-sample.xlsx](contacts-sample.xlsx)：从本次真实导出中仅提取虚构样例，排除服务器其他联系人；并非完整数据库备份。
-- [excel-preview.html](excel-preview.html)：07 的预览来源，仅为样例工作簿内容展示。
-- [Git 贡献快照](../GIT_CONTRIBUTIONS.md)：截图对应的提交统计。材料整理本身会新增提交，最终发布前按当前 main 更新次数。
-
-截图上传到 CSDN 时须重新上传图片，视频也须上传可访问的附件或视频平台；不要直接粘贴本机路径。
+- [新版通讯录运行演示](address-book-demo.mp4)为 2 分 30 秒的阿里云实录，展示新建、编辑、删除、搜索、特别关注和 Excel 导入导出。
+- [改版前的云端验证录像](cloud-walkthrough.webm)记录了重复导入、错误提示和手机布局。
+- [本地联调录像](../integration/full-stack-demo.webm)展示了实际服务重启后的数据保留。
+- [Excel 导入样例](contacts-sample.xlsx)包含从实际导出中提取的虚构联系人，可用于测试批量导入。
