@@ -30,7 +30,7 @@
 
 - 项目：[address-book](https://github.com/linblackchen-code/address-book)
 - 代码规范：[CODING_STANDARDS.md](https://github.com/linblackchen-code/address-book/blob/main/docs/CODING_STANDARDS.md)
-- 公网地址：【有则填写，没有则如实说明未完成】
+- 公网地址：[通讯录](http://47.114.63.69/address-book/)，2026-11-16 已部署。
 - 前端 PR：[PR #1](https://github.com/linblackchen-code/address-book/pull/1)，分支 feat/frontend
 - 最终 Release：【发布后填写】
 
@@ -40,7 +40,7 @@
 | 收藏联系人 | 前端已实现，真实联调待完成 | 【收藏和刷新后状态】 |
 | 多种联系方式 | 前端动态表单已实现 | 【实际保存并重新读取】 |
 | Excel 导入导出 | 前端 HTTP 流程已用测试桩验证 | 【实际服务导入导出及多值往返】 |
-| 云部署（选做） | 【待填】 | 【公网地址】 |
+| 云部署（选做） | 已部署到阿里云 Ubuntu | [公网地址](http://47.114.63.69/address-book/)、[公网验收](cloud/VERIFICATION.md) |
 
 前端阶段演示图，黄色提示表示未连接后端：
 

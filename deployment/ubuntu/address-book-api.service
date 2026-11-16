@@ -1,0 +1,17 @@
+[Unit]
+Description=Address Book API
+After=network.target
+
+[Service]
+Type=simple
+User=ecs-user
+Group=ecs-user
+WorkingDirectory=/home/ecs-user/address-book
+Environment=ADDRESS_BOOK_DB_PATH=/var/lib/address-book/contacts.sqlite3
+ExecStart=/home/ecs-user/address-book/.venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8001 --root-path /address-book
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

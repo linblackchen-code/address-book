@@ -6,6 +6,14 @@ Software Engineering (FZU–MU) 极限编程作业。
 
 前端使用原生 HTML/CSS/JavaScript 和 `fetch`。后端使用 FastAPI、Pydantic、Uvicorn、SQLite 和 openpyxl，提供联系人、收藏及 `.xlsx` 导入导出接口。
 
+## 公网访问
+
+- 通讯录：http://47.114.63.69/address-book/
+- API 文档：http://47.114.63.69/address-book/docs
+- 同服务器计算器：http://47.114.63.69/
+- [部署与更新说明](deployment/ubuntu/README.md)
+- [公网接口验证](docs/cloud/VERIFICATION.md)
+
 ## Windows 一键运行
 
 安装 Python 3.11+ 后，双击 `start-local.cmd`，首次自动创建虚拟环境并安装依赖，后台启动真实前后端并打开页面。双击 `stop-local.cmd` 停止本项目服务，数据库保留。

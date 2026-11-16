@@ -1,5 +1,9 @@
 # 截图与提交材料索引
 
+## 云端材料（2026-11-16）
+
+[公网访问](http://47.114.63.69/address-book/) · [部署说明](../deployment/ubuntu/README.md) · [公网验收](cloud/VERIFICATION.md)。cloud/ 下的 Excel 来自真实云服务。自动浏览器拦截公网 HTTP 页面，公网截图及录像尚未补录；现有本地真实联调录像仍在 integration/。
+
 ## 真实整合材料（2026-11-16）
 
 前后端已经在本机真实运行并验证。见 [整合验证](integration/VERIFICATION.md)、[完整操作录像](integration/full-stack-demo.webm)、[实际导出工作簿](integration/contacts-export.xlsx)。integration/ 中的截图对应实际 API；下方前端阶段图片仍为演示或测试桩。
