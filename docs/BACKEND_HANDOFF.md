@@ -1,3 +1,5 @@
+> 整合更新（2026-11-16）：前后端已整合到 main。新成员直接 Clone 默认分支即可运行，优先阅读根目录 README 和 docs/integration/VERIFICATION.md。下文分支接手流程为开发阶段历史记录，后续工作从最新 main 建分支。个人博客、PSP 和贡献记录仍按实际补充。
+
 # 后端接入与材料交接：从这里开始
 
 本文件供后端成员直接接手。前端代码和协作材料已在 GitHub 的 **feat/frontend** 分支，PR 为 [#1](https://github.com/linblackchen-code/address-book/pull/1)。当前 main 仍是初始化版本；只下载 main 看不到完整前端和本说明。

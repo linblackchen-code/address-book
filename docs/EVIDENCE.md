@@ -1,5 +1,9 @@
 # 截图与提交材料索引
 
+## 真实整合材料（2026-11-16）
+
+前后端已经在本机真实运行并验证。见 [整合验证](integration/VERIFICATION.md)、[完整操作录像](integration/full-stack-demo.webm)、[实际导出工作簿](integration/contacts-export.xlsx)。integration/ 中的截图对应实际 API；下方前端阶段图片仍为演示或测试桩。
+
 ## 已生成的前端材料
 
 图片中的黄色提示明确标注演示模式或 HTTP 测试桩，全部为虚构数据。

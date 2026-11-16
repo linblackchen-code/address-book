@@ -20,6 +20,7 @@ obj/
 *.sqlite
 *.sqlite3
 backend/data/
+.runtime/
 *.log
 
 # Editor and OS files
