@@ -1,30 +1,121 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#225b4a"><title>通讯录</title>
-  <link rel="stylesheet" href="styles.css"><script type="module" src="app.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#243a21">
+  <title>通讯录</title>
+  <link rel="stylesheet" href="styles.css?v=editorial-forest">
+  <script type="module" src="app.js"></script>
 </head>
 <body>
   <aside class="sidebar">
-    <a class="brand" href="./">通讯录</a>
-    <p class="nav-label">我的通讯录</p>
-    <nav aria-label="联系人筛选"><button id="all-nav" class="nav active" aria-pressed="true">◉ <span>全部联系人</span><b id="all-count">—</b></button><button id="favorite-nav" class="nav" aria-pressed="false">☆ <span>特别关注</span><b id="favorite-count">—</b></button></nav>
-    <div class="workspace"><span class="avatar">AB</span><div>个人通讯录</div></div>
+    <a class="brand" href="./"><span class="book-mark" aria-hidden="true"></span>通讯录</a>
+    <nav aria-label="联系人筛选">
+      <button id="all-nav" class="nav active" aria-pressed="true">
+        <span class="nav-icon" aria-hidden="true">≡</span>
+        <span>全部联系人</span><b id="all-count">—</b>
+      </button>
+      <button id="favorite-nav" class="nav" aria-pressed="false">
+        <span class="nav-icon" aria-hidden="true">☆</span>
+        <span>特别关注</span><b id="favorite-count">—</b>
+      </button>
+    </nav>
   </aside>
+
   <main>
-    <header><div class="breadcrumb">我的空间 <span>/</span> 联系人管理</div><span class="edition">ADDRESS BOOK / 2026</span></header>
-    <section class="heading"><div><h1 id="page-title">每一位联系，都值得珍藏<span>。</span></h1></div><button id="add-contact" class="primary">＋ 新建联系人</button></section>
-    <div id="demo-banner" class="demo-banner" hidden>演示模式 · 虚构样例，仅保存在本次页面内存中；未连接真实后端。<a href="?">切换真实接口</a></div>
-    <section class="stats" aria-label="通讯录概览"><div><span>全部联系人</span><strong id="stat-total">—</strong></div><div><span>特别关注</span><strong id="stat-favorite">—</strong></div><div><span>联系方式</span><strong id="stat-methods">—</strong></div></section>
-    <section class="directory"><div class="toolbar"><div><h2 id="list-title">全部联系人</h2><span id="result-count">正在连接…</span></div><div class="tools"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索姓名、电话或邮箱" aria-label="搜索联系人"></label><button id="import-button" class="secondary">↑ 导入 Excel</button><button id="export-button" class="secondary">↓ 导出 Excel</button><input id="import-file" type="file" accept=".xlsx" hidden></div></div>
-    <p class="file-hint">Excel 格式：.xlsx · 每个联系人一行 · <a href="https://github.com/linblackchen-code/address-book/blob/main/docs/API_CONTRACT.md" target="_blank" rel="noopener">查看字段约定</a></p>
-    <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
-    <div id="contact-list" class="contact-grid" aria-busy="true"></div>
-    <div id="empty-state" class="empty" hidden><span>◎</span><h3 id="empty-title">还没有联系人</h3><p id="empty-description">新建一位联系人，开始整理你的连接。</p><button id="empty-add" class="secondary">＋ 新建联系人</button></div>
-    <div id="error-state" class="empty" hidden><span>↻</span><h3>暂时无法连接通讯录</h3><p>请确认后端已启动、API 地址和跨域配置正确。</p><button id="retry" class="secondary">重新连接</button><a class="demo-link" href="?demo=1">查看标注清楚的前端演示</a></div>
+    <header class="heading">
+      <h1 id="page-title">我的通讯录</h1>
+      <button id="add-contact" class="primary"><span aria-hidden="true">＋</span> 新建联系人</button>
+      <div class="index-art" aria-hidden="true">
+        <span class="index-sheet"></span>
+        <span class="index-sheet"></span>
+        <span class="index-sheet"></span>
+      </div>
+    </header>
+
+    <div id="demo-banner" class="demo-banner" hidden>
+      演示模式 · 数据仅保存在当前页面，不会写入数据库。<a href="?">切换真实接口</a>
+    </div>
+
+    <section class="stats" aria-label="通讯录概览">
+      <div><span>全部联系人</span><strong id="stat-total">—</strong></div>
+      <div><span>特别关注</span><strong id="stat-favorite">—</strong></div>
+      <div><span>联系方式</span><strong id="stat-methods">—</strong></div>
+    </section>
+
+    <section class="directory" aria-labelledby="list-title">
+      <div class="toolbar">
+        <div class="list-heading">
+          <h2 id="list-title">全部联系人</h2>
+          <span id="result-count">正在连接…</span>
+        </div>
+        <div class="tools">
+          <label class="search">
+            <span class="search-icon" aria-hidden="true"></span>
+            <input id="search" type="search" placeholder="搜索姓名、电话或邮箱" aria-label="搜索联系人">
+          </label>
+          <button id="import-button" class="secondary"><span aria-hidden="true">↑</span> 导入 Excel</button>
+          <button id="export-button" class="secondary"><span aria-hidden="true">↓</span> 导出 Excel</button>
+          <input id="import-file" type="file" accept=".xlsx" hidden>
+        </div>
+      </div>
+      <p class="file-hint">Excel 格式：.xlsx · 每位联系人一行 · <a href="https://github.com/linblackchen-code/address-book/blob/main/docs/API_CONTRACT.md" target="_blank" rel="noopener">查看字段约定</a></p>
+      <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
+      <div id="contact-list" class="contact-grid" aria-busy="true"></div>
+      <div id="empty-state" class="empty" hidden>
+        <span class="book-mark" aria-hidden="true"></span>
+        <h3 id="empty-title">还没有联系人</h3>
+        <p id="empty-description">新建一位联系人，开始整理你的连接。</p>
+        <button id="empty-add" class="secondary"><span aria-hidden="true">＋</span> 新建联系人</button>
+      </div>
+      <div id="error-state" class="empty connection-error" hidden>
+        <span aria-hidden="true">↻</span>
+        <h3>暂时无法连接通讯录</h3>
+        <p>请确认后端已启动、API 地址和跨域配置正确。</p>
+        <button id="retry" class="secondary">重新连接</button>
+        <a class="demo-link" href="?demo=1">打开演示模式</a>
+      </div>
     </section>
   </main>
-  <dialog id="contact-dialog" aria-labelledby="dialog-title"><form id="contact-form"><div class="dialog-heading"><div><p class="eyebrow">A NEW CONNECTION</p><h2 id="dialog-title">新建联系人</h2></div><button type="button" class="icon-button" data-close aria-label="关闭">×</button></div><label class="field">姓名 <span class="required">*</span><input id="contact-name" name="name" required maxlength="80" placeholder="请输入联系人姓名" autocomplete="name"></label><label class="field">备注<textarea id="contact-notes" maxlength="1000" rows="2" placeholder="公司、分组，或关于这位联系人的小记"></textarea></label><div class="method-heading"><h3>联系方式</h3><button id="add-method" type="button" class="text-button">＋ 添加一项</button></div><div id="method-fields"></div><label class="favorite-option"><input id="contact-favorite" type="checkbox"> 设为特别关注</label><p id="form-error" class="form-error" role="alert" hidden></p><div class="dialog-actions"><button type="button" class="secondary" data-close>取消</button><button id="save-contact" type="submit" class="primary">保存联系人</button></div></form></dialog>
-  <dialog id="delete-dialog" aria-labelledby="delete-title"><form id="delete-form"><h2 id="delete-title">删除联系人？</h2><p id="delete-description"></p><p>删除后无法恢复，请确认后再操作。</p><p id="delete-error" class="form-error" role="alert" hidden></p><div class="dialog-actions"><button type="button" class="secondary" id="cancel-delete">取消</button><button id="confirm-delete" class="danger" type="submit">确认删除</button></div></form></dialog>
-</body></html>
+
+  <dialog id="contact-dialog" aria-labelledby="dialog-title">
+    <form id="contact-form">
+      <div class="dialog-heading">
+        <h2 id="dialog-title">新建联系人</h2>
+        <button type="button" class="icon-button" data-close aria-label="关闭">×</button>
+      </div>
+      <label class="field">姓名 <span class="required">*</span>
+        <input id="contact-name" name="name" required maxlength="80" placeholder="请输入联系人姓名" autocomplete="name">
+      </label>
+      <label class="field">备注
+        <textarea id="contact-notes" maxlength="1000" rows="2" placeholder="例如公司或分组"></textarea>
+      </label>
+      <div class="method-heading">
+        <h3>联系方式</h3>
+        <button id="add-method" type="button" class="text-button">＋ 添加一项</button>
+      </div>
+      <div id="method-fields"></div>
+      <label class="favorite-option"><input id="contact-favorite" type="checkbox"> 设为特别关注</label>
+      <p id="form-error" class="form-error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button type="button" class="secondary" data-close>取消</button>
+        <button id="save-contact" type="submit" class="primary">保存联系人</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="delete-dialog" aria-labelledby="delete-title">
+    <form id="delete-form">
+      <h2 id="delete-title">删除联系人？</h2>
+      <p id="delete-description"></p>
+      <p>删除后无法恢复，请确认后再操作。</p>
+      <p id="delete-error" class="form-error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button type="button" class="secondary" id="cancel-delete">取消</button>
+        <button id="confirm-delete" class="danger" type="submit">确认删除</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
