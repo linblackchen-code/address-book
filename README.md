@@ -1,6 +1,6 @@
 # 通讯录 · Address Book
 
-Software Engineering (FZU–MU) 极限编程作业。前后端已合并到 `main`，本地联调与阿里云部署均已完成。
+Software Engineering (FZU–MU) 极限编程作业。团队 **BLGNB**：林俊晨（前端，50%）、陈子元（后端，50%）。前后端已合并到 `main`，本地联调与阿里云部署均已完成。
 
 ## 在线体验
 
@@ -10,7 +10,9 @@ Software Engineering (FZU–MU) 极限编程作业。前后端已合并到 `main
 
 ## 作业提交入口
 
-**先看 [最终提交指南](docs/SUBMISSION_GUIDE.md)**，再按 [博客协作框架](docs/BLOG_COLLABORATION_TEMPLATE.md) 填写个人内容。
+**先看 [林俊晨前端博客草稿](docs/BLOG_FRONTEND_LIN_JUNCHEN.md)**。姓名、团队、分工、前端工作、个人总结和明确标注的回顾估算 PSP 已补齐。
+
+[最终提交指南](docs/SUBMISSION_GUIDE.md) · [陈子元需要补充的材料](docs/TEAMMATE_MATERIALS.md) · [通用博客框架](docs/BLOG_COLLABORATION_TEMPLATE.md)。
 
 | 材料 | 入口 |
 | --- | --- |

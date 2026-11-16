@@ -10,6 +10,8 @@
 
 同一前端账号在 Git 中显示过 Junchen Lin 和 linblackchen-code，按已关联身份归并。非 merge 提交仍包含初始化、文档、测试和部署，不等于纯功能编码次数；提交次数不代表贡献比例。后端 2 次真实提交已包含功能实现和验证，作业要求的是仓库总计至少 3 次，并未要求每人至少 3 次。
 
+团队 BLGNB：linblackchen-code 对应林俊晨（前端），josephchen9jo-coder 对应陈子元（后端），贡献比例各 50%。比例由团队确认，不按提交次数换算。
+
 ## PR
 
 - [前端 PR #1](https://github.com/linblackchen-code/address-book/pull/1)：已合并。
