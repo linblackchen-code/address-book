@@ -25,6 +25,5 @@
 ## 视频和工作簿
 
 - [新版通讯录运行演示](address-book-demo.mp4)为 2 分 30 秒的阿里云实录，展示新建、编辑、删除、搜索、特别关注和 Excel 导入导出。
-- [改版前的云端验证录像](cloud-walkthrough.webm)记录了重复导入、错误提示和手机布局。
 - [本地联调录像](../integration/full-stack-demo.webm)展示了实际服务重启后的数据保留。
 - [Excel 导入样例](contacts-sample.xlsx)包含从实际导出中提取的虚构联系人，可用于测试批量导入。

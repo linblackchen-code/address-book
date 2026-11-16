@@ -144,7 +144,7 @@ api.js 集中处理网络连接失败和非成功 HTTP 状态，并兼容后端 
 
 项目已部署到与计算器相同的阿里云服务器。计算器使用根路径及后端 8000，通讯录使用 /address-book/ 路径及独立后端 8001。数据库和服务独立，Nginx 按路径转发。
 
-- [真实云服务操作录像](submission/cloud-walkthrough.webm)：通过 SSH 隧道访问同一云服务，无模拟响应、无配音。
+- [新版通讯录运行演示（MP4，2 分 30 秒）](submission/address-book-demo.mp4)录自阿里云上的新版页面，展示联系人管理、特别关注和 Excel 导入导出。
 - [本地完整联调录像](integration/full-stack-demo.webm)：包含实际服务重启后的持久化验证。
 - [公网验收记录](cloud/VERIFICATION.md)。
 - 后端已有 6 项自动回归测试通过。
