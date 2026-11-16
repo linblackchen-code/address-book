@@ -1,187 +1,166 @@
-# 【姓名待填】极限编程作业：知交通讯录
+# 【姓名待填】极限编程作业：通讯录
 
-> 本文是协作框架，所有占位符需在发布前补齐。项目内容可以共用，但每个人单独发布博客，分别填写本人 PSP、经历和实际工作。前后端已整合并真实联调，实际证据见 integration/VERIFICATION.md；下文的阶段状态须在最终发布前更新。
+> 项目共同内容和实际证据已经整理。姓名、团队名称、个人 PSP、实际分工比例及个人总结由两人分别补充。两个人必须各自发布博客。发布时上传图片/视频，替换相对地址和所有个人占位符。
 
 | 项目 | 内容 |
 | --- | --- |
 | 所属课程 | Software Engineering (FZU–MU) |
 | 团队名称 | 【共同填写】 |
 | 作业要求 | [Extreme Programming](https://bbs.csdn.net/topics/620593436) |
-| 作业目标 | 实现收藏、多联系方式、Excel 导入导出，实践前后端分工及 Git 协作 |
-| 其他参考资料 | 【各人填写实际使用资料】 |
+| 作业目标 | 完成收藏、多联系方式、Excel 导入导出，实践前后端分工和 Git 协作 |
+| 其他参考资料 | 【按实际参考填写，文末有资料入口】 |
 
 ## 目录
 
-1. 项目概览与完成情况
-2. 技术栈与模块划分
-3. Git 协作与提交记录
-4. 功能实现
-5. 验证与完整运行演示
-6. 分工与贡献比例
-7. 合作困难及解决方法
-8. 个人 PSP
-9. 总结与参考资料
+1. [项目与完成情况](#1-项目与完成情况)
+2. [技术栈及模块](#2-技术栈及模块)
+3. [Git 协作及提交记录](#3-git-协作及提交记录)
+4. [功能实现](#4-功能实现)
+5. [验证与视频](#5-验证与视频)
+6. [分工与贡献比例](#6-分工与贡献比例)
+7. [合作问题和解决方法](#7-合作问题和解决方法)
+8. [个人 PSP](#8-个人-psp)
+9. [个人总结及参考资料](#9-个人总结及参考资料)
 
-## 1. 项目概览与完成情况
+## 1. 项目与完成情况
 
-**【前端提供】** 名称、界面截图和交互范围。
-**【后端提供】** 实际后端运行状态、部署地址。
-**【共同确认】** 功能通过真实联调的情况。
+**【前端核对】** 页面截图与交互。**【后端核对】** 接口、持久化和 Excel。**【共同核对】** 公网、PR、Release。
 
-- 项目：[address-book](https://github.com/linblackchen-code/address-book)
-- 代码规范：[CODING_STANDARDS.md](https://github.com/linblackchen-code/address-book/blob/main/docs/CODING_STANDARDS.md)
-- 公网地址：[通讯录](http://47.114.63.69/address-book/)，2026-11-16 已部署。
-- 前端 PR：[PR #1](https://github.com/linblackchen-code/address-book/pull/1)，分支 feat/frontend
-- 最终 Release：【发布后填写】
+- 仓库：https://github.com/linblackchen-code/address-book
+- 公网：http://47.114.63.69/address-book/
+- [代码规范](https://github.com/linblackchen-code/address-book/blob/main/docs/CODING_STANDARDS.md)
+- [API 文档](http://47.114.63.69/address-book/docs)
+- PR [#1](https://github.com/linblackchen-code/address-book/pull/1)、[#2](https://github.com/linblackchen-code/address-book/pull/2) 已合并。
+- Release：【发布 v1.0.0 后填写链接，说明草稿见 RELEASE_NOTES.md】。
 
-| 要求 | 当前阶段 | 最终证据 |
-| --- | --- | --- |
-| 页面样式 | 前端已实现，桌面和手机已检查 | 页面截图 |
-| 收藏联系人 | 前端已实现，真实联调待完成 | 【收藏和刷新后状态】 |
-| 多种联系方式 | 前端动态表单已实现 | 【实际保存并重新读取】 |
-| Excel 导入导出 | 前端 HTTP 流程已用测试桩验证 | 【实际服务导入导出及多值往返】 |
-| 云部署（选做） | 已部署到阿里云 Ubuntu | [公网地址](http://47.114.63.69/address-book/)、[公网验收](cloud/VERIFICATION.md) |
+页面、收藏、多联系方式、真实 Excel 导入导出均已完成，已部署至阿里云。数据由 SQLite 持久化，支持手机布局。
 
-前端阶段演示图，黄色提示表示未连接后端：
+![云端页面](submission/01-cloud-desktop.png)
 
-![桌面前端演示](screenshots/01-demo-desktop.png)
+图片通过 SSH 隧道访问同一真实云服务采集，未使用模拟响应；访问与数据范围见 [材料说明](submission/README.md)。
 
-CSDN 发布时应上传图片并替换地址。
+## 2. 技术栈及模块
 
-## 2. 技术栈与模块划分
+**【前端补个人设计解释】** 原生 HTML/CSS/JavaScript，fetch、动态表单和响应式布局。
+**【后端补个人设计解释】** FastAPI、Pydantic、Uvicorn、SQLite、openpyxl。
+**【共同参考】** [实现思路和数据模型](IMPLEMENTATION.md)、[最终接口约定](API_CONTRACT.md)。
 
-**【前端提供】** HTML/CSS/JavaScript、fetch、响应式布局及文件职责。
-**【后端提供】** 实际框架、版本、SQLite 数据模型、Excel 处理及运行方式，确认是否采用 FastAPI/openpyxl。
-**【共同提供】** 最终接口和 Excel 格式。
+浏览器负责界面与交互，后端负责校验、数据存储和 Excel 处理。contacts 与 contact_methods 一对多关联，用 position 保留联系方式顺序。Nginx 对外提供页面和 API 转发，systemd 管理后端服务。
 
-浏览器负责交互，经 HTTP 调用后端；后端负责独立校验、持久化和 Excel。
-接口建议稿：[API_CONTRACT.md](API_CONTRACT.md)，正式博客需说明最终确认结果。
+## 3. Git 协作及提交记录
 
-## 3. Git 协作与提交记录
+**【两人分别核对】** 自己的账号、实际提交次数和代表提交；文档归档可能继续新增提交，不将团队总数当作个人次数。
 
-**【前端提供】** 本人提交次数、代表性提交链接、PR 与 GitHub 历史截图。
-**【后端提供】** 本人提交次数、代表性提交链接、PR 与 GitHub 历史截图。
-**【共同确认】** 统计口径与截图日期。
+[统计快照及提交清单](GIT_CONTRIBUTIONS.md)已按 Git 身份归并，包含是否为 merge 的说明。按统计快照填写，或在最终发布前更新到最新 main。
 
-| 成员 | 职责 | 实际 commit 次数 | 代表性提交 |
+| 成员 | GitHub | 职责 | 提交次数 |
 | --- | --- | --- | --- |
-| 【前端姓名】 | 前端 | 【按 GitHub 统计】 | 【链接】 |
-| 【后端姓名】 | 后端 | 【按 GitHub 统计】 | 【链接】 |
+| 【前端姓名】 | linblackchen-code | 前端、整合及部署等，按实际核对 | 【按快照/最新统计填写】 |
+| 【后端姓名】 | josephchen9jo-coder | 后端，按实际核对 | 【按快照/最新统计填写】 |
 
-【插入 GitHub Commits 页面截图，覆盖双方记录。】
-已提供前端前三阶段的真实页面截图；这是截取时的 3 次提交，后续证据归档提交另计，最终发布前更新双方统计与截图。
+![main 提交历史](submission/08-github-main-commits.png)
 
-![前端 GitHub 三阶段提交记录](screenshots/10-github-frontend-commits.png)
+双方在分支开发并通过 PR 合入 main，使用 merge 保留原提交历史。
 
-| 阶段 | 前端实际提交 |
-| --- | --- |
-| 页面及接口约定 | [eaf9f21](https://github.com/linblackchen-code/address-book/commit/eaf9f21) |
-| 交互实现 | [9de73fe](https://github.com/linblackchen-code/address-book/commit/9de73fe) |
-| 验证及博客框架 | [f939cc1](https://github.com/linblackchen-code/address-book/commit/f939cc1) |
+![前端 PR](submission/09-github-frontend-pr.png)
+![后端 PR](submission/10-github-backend-pr.png)
 
-仓库总提交数不等于个人编码次数；初始化文档、合并与功能提交应如实区分。
-描述实际分支/PR 流程，前端本次在 feat/frontend 开发。课程起始仓库的 Fork 要求需要另行核实，不把新建仓库写成已 Fork。
+本仓库是新建仓库，课程是否另有指定 Fork 仓库需核实，不写成已经 Fork。
 
 ## 4. 功能实现
 
-### 4.1 页面和联系人管理
+### 4.1 页面与联系人管理
 
-**【前端提供】** 卡片与统计、搜索、新建/编辑表单、删除确认、手机适配；说明 textContent 展示用户输入。
-**【后端提供】** 查询、创建、修改、删除 API 与数据存储。
-**【共同补证据】** 真实 API 新增并刷新仍可见的结果。
+**【前端】** 卡片、统计、搜索、弹窗、确认删除、加载和错误反馈；使用 textContent 展示用户内容。
+**【后端】** 联系人增删改查、事务与数据存储。双方可结合自己参与的代码补充一段解释。
 
-![手机前端演示](screenshots/06-demo-mobile.png)
+![手机页面](submission/06-cloud-mobile.png)
 
 ### 4.2 收藏联系人
 
-**【前端提供】** 星标、特别关注入口、成功后刷新、失败反馈。
-**【后端提供】** is_favorite 持久化、PATCH 设置指定状态的实现。
-**【共同补证据】** 真实收藏后刷新仍保留。
+**【前端】** 星标和特别关注筛选，成功后重新读取列表。
+**【后端】** PATCH 设置明确布尔状态，保存到数据库，重复设置同一状态不会翻转。
 
-![收藏前端演示](screenshots/02-demo-favorites.png)
+![收藏筛选](submission/02-cloud-favorites.png)
 
 ### 4.3 多种联系方式
 
-**【前端提供】** 动态增删行、类型选择、同类型多项、必填与邮箱格式校验。
-**【后端提供】** 一对多结构、保存和更新规则、独立字段校验。
-**【共同补证据】** 两个电话及一个邮箱实际保存后重新读取。
+**【前端】** 动态增加/移除联系方式，支持同类型多项和基础校验。
+**【后端】** 一对多模型、字段校验及有序保存。
 
-![前端多联系方式表单](screenshots/04-demo-multiple-methods.png)
+![多联系方式](submission/03-multiple-methods.png)
 
 ### 4.4 Excel 导入导出
 
-**【前端提供】** .xlsx/5 MiB 检查、FormData 的 file 字段、结果反馈、刷新和 Blob 下载。
-**【后端提供】** Excel 解析生成、字段映射、多值序列化、无效行和重复导入政策、事务；实际导出文件及模板。
-**【共同补证据】** 实际 Excel 打开截图、导入后联系人、同类型多值和电话前导零保留；说明导出全部联系人。
+**【前端】** .xlsx 与大小检查、FormData 上传、结果反馈和 Blob 下载。
+**【后端】** 工作簿解析生成、整批校验、重复记录跳过。每个联系人一行、每类信息一列；多值使用 JSON 字符串数组，保留前导零和 +。
 
-【插入真实 Excel 文件截图和真实导入结果。】
-现有 09-contract-import-feedback.png 是接口桩反馈，不是实际 Excel 解析证据。contacts-template.xlsx 只是待确认格式夹具。
+![实际导出内容预览](submission/07-excel-content.png)
+
+上图为从真实导出提取的虚构样例数据预览，不是 Excel 软件截图。[样例文件](submission/contacts-sample.xlsx)可下载打开。
+
+![云端导入结果](submission/04-cloud-import.png)
 
 ### 4.5 异常处理
 
-**【前端提供】** 空白、搜索无结果、服务不可用、服务端验证错误、按钮恢复。
-**【后端提供】** 错误码、文件和字段校验、数据库异常反馈。
-**【共同确认】** 前端校验不能替代后端校验。
+**【前端】** 可读错误提示和按钮恢复。
+**【后端】** 独立验证实际文件内容和字段，无效批次拒绝，避免部分写入。
 
-![无搜索结果](screenshots/03-demo-search-empty.png)
+![损坏文件错误反馈](submission/05-cloud-invalid-file.png)
 
-![后端不可用](screenshots/08-api-unavailable.png)
+## 5. 验证与视频
 
-## 5. 验证与完整运行演示
+**【共同】** 上传并检查视频链接、清晰度和完整流程。
 
-**【前端提供】** [前端验证记录](FRONTEND_VERIFICATION.md)、截图及阶段演示视频。
-**【后端提供】** 实际 API、数据库重启后持久化、Excel 往返及错误文件的验证记录。
-**【共同提供】** 真实前后端完整运行视频和可访问链接，建议附关键时间点。
+- [真实云服务操作录像](submission/cloud-walkthrough.webm)：通过 SSH 隧道访问同一云服务，未使用接口桩，无配音。
+- [本地真实联调录像](integration/full-stack-demo.webm)：包含真实服务重启后持久化验证。
+- [公网验收](cloud/VERIFICATION.md)。
+- 后端自动回归 6 项通过；浏览器覆盖新增、编辑、删除、收藏、Excel、错误和手机布局。
 
-- [前端阶段视频](videos/frontend-demo.webm)：仅演示前端，不替代最终完整视频。
-- 完整项目视频：[真实前后端操作录像](integration/full-stack-demo.webm)，发布博客时上传并替换为可访问的视频地址。
-- 真实联调结果：[整合验证](integration/VERIFICATION.md)。
-
-[证据索引和最终录制脚本](EVIDENCE.md)。
+【发布前将视频上传到可访问平台并替换链接；如需解说，可按材料索引中的流程重录。】
 
 ## 6. 分工与贡献比例
 
-**【前端提供】** 实际页面、交互、验证和文档工作。
-**【后端提供】** 实际接口、存储、Excel 和部署工作。
-**【共同确认】** 共享工作及贡献比例，合计 100%。
+**【双方共同填写】** 根据实际工作确定比例，合计 100%；提交次数不直接决定贡献比例。
 
-| 成员 | 实际工作 | 比例 |
+| 成员 | 实际完成内容 | 贡献比例 |
 | --- | --- | --- |
 | 【前端姓名】 | 【按实际填写】 | 【待评估】% |
 | 【后端姓名】 | 【按实际填写】 | 【待评估】% |
 | 合计 | | 100% |
 
-## 7. 合作困难及解决方法
+## 7. 合作问题和解决方法
 
-**【双方各提供】** 真实问题、原因、办法及验证。下表是提示，不代表已经发生。
+**【各人补实际经历】** [IMPLEMENTATION.md](IMPLEMENTATION.md)记载了项目中实际处理的前端版本回退、Windows 进程、上传限制、子目录部署等问题。选择自己实际参与的内容说明，不把共同或他人的工作写成独立完成。
 
-| 实际问题 | 原因 | 解决办法 | 验证结果 | 参与者 |
+| 实际问题 | 原因 | 解决过程 | 验证结果 | 参与者 |
 | --- | --- | --- | --- | --- |
-| 【如实际发生的字段不一致或跨域问题】 | 【待填】 | 【待填】 | 【待填】 | 【待填】 |
+| 【本人实际参与的问题】 | 【待填】 | 【待填】 | 【待填】 | 【待填】 |
 
 ## 8. 个人 PSP
 
-**【各人单独填写】** 使用本人预计和实际耗时，统一分钟；不要复制队友记录。若课程有固定模板，以课程模板为准；未事先记录预计值时如实说明。
+**【每人单独填写】** 本人预计和实际耗时，统一分钟。课程若提供固定模板则替换；未事先记录预计值应如实说明。
 
 | 阶段 | 预计（分钟） | 实际（分钟） |
 | --- | --- | --- |
 | 需求与计划 | 【待填】 | 【待填】 |
-| 技术学习 | 【待填】 | 【待填】 |
+| 技术准备 | 【待填】 | 【待填】 |
 | 设计与接口约定 | 【待填】 | 【待填】 |
 | 编码 | 【待填】 | 【待填】 |
 | 测试与联调 | 【待填】 | 【待填】 |
 | 文档、截图和视频 | 【待填】 | 【待填】 |
-| 总结复盘 | 【待填】 | 【待填】 |
+| 总结 | 【待填】 | 【待填】 |
 | 合计 | 【求和】 | 【求和】 |
 
-## 9. 总结与参考资料
+## 9. 个人总结及参考资料
 
-**【各人单独填写】** 本人收获、代码理解、实际不足与改进；如使用 AI 辅助，按课程要求如实说明范围。
+**【各人单独填写】** 本人收获、代码理解、不足和改进；根据课程要求说明实际使用的辅助工具。
 
-按实际使用保留参考：
-- [MDN Fetch API](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API)
+按实际使用保留：
+- [MDN Fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API)
 - [FastAPI 文件上传](https://fastapi.tiangolo.com/tutorial/request-files/)
 - [openpyxl 教程](https://openpyxl.readthedocs.io/en/stable/tutorial.html)
-- 【其他资料】
+- [Nginx 文档](https://nginx.org/en/docs/)
+- 【其他实际参考资料】
 
-发布前确认：无占位符；截图与最终版本一致；链接与视频可访问；提交截图与次数齐全；个人 PSP 正确；比例合计 100%；提前发布预留审核时间。
+发布前删除所有个人占位符，上传图片和视频，检查链接。两人各自发布、各自提交；截止 2026-11-17 23:59，提前发布预留审核时间。

@@ -1,72 +1,61 @@
-# Address Book / 通讯录
+# 通讯录 · Address Book
 
-Software Engineering (FZU–MU) 极限编程作业。
+Software Engineering (FZU–MU) 极限编程作业。前后端已合并到 `main`，本地联调与阿里云部署均已完成。
 
-## 当前状态
+## 在线体验
 
-前端使用原生 HTML/CSS/JavaScript 和 `fetch`。后端使用 FastAPI、Pydantic、Uvicorn、SQLite 和 openpyxl，提供联系人、收藏及 `.xlsx` 导入导出接口。
+- [通讯录](http://47.114.63.69/address-book/)
+- [API 文档](http://47.114.63.69/address-book/docs)
+- [代码规范](docs/CODING_STANDARDS.md)
 
-## 公网访问
+## 作业提交入口
 
-- 通讯录：http://47.114.63.69/address-book/
-- API 文档：http://47.114.63.69/address-book/docs
-- 同服务器计算器：http://47.114.63.69/
-- [部署与更新说明](deployment/ubuntu/README.md)
-- [公网接口验证](docs/cloud/VERIFICATION.md)
+**先看 [最终提交指南](docs/SUBMISSION_GUIDE.md)**，再按 [博客协作框架](docs/BLOG_COLLABORATION_TEMPLATE.md) 填写个人内容。
 
-## Windows 一键运行
+| 材料 | 入口 |
+| --- | --- |
+| 最终截图、云端录像、Excel 样例 | [材料索引](docs/submission/README.md) |
+| 实现思路与数据模型 | [IMPLEMENTATION.md](docs/IMPLEMENTATION.md) |
+| Git 提交统计与合并记录 | [GIT_CONTRIBUTIONS.md](docs/GIT_CONTRIBUTIONS.md) |
+| 发布版本说明草稿 | [RELEASE_NOTES.md](docs/RELEASE_NOTES.md) |
+| 交付逐项检查 | [DELIVERY_CHECKLIST.md](docs/DELIVERY_CHECKLIST.md) |
 
-安装 Python 3.11+ 后，双击 `start-local.cmd`，首次自动创建虚拟环境并安装依赖，后台启动真实前后端并打开页面。双击 `stop-local.cmd` 停止本项目服务，数据库保留。
+## 已实现功能
+
+联系人新建、编辑、删除与搜索；收藏及特别关注筛选；一个联系人多种、同类型多项联系方式；Excel 导入导出及重复记录跳过；手机布局和错误反馈。数据保存在后端 SQLite，刷新或重启后保留。
+
+前端使用 HTML/CSS/JavaScript + fetch；后端使用 FastAPI、Pydantic、Uvicorn、SQLite 和 openpyxl。当前为共享通讯录，没有账号登录及用户数据隔离。
+
+## Windows 本地运行
+
+安装 Python 3.11+，Clone 本仓库后双击 `start-local.cmd`。首次会安装依赖并启动前后端。双击 `stop-local.cmd` 停止，数据保留。
 
 - 页面：http://127.0.0.1:8080/frontend/
 - API 文档：http://127.0.0.1:8000/docs
-- 数据库：backend/data/contacts.sqlite3（不提交到 Git）
-- 日志：.runtime/；端口 8000/8080 被其他程序占用时会提示，不会停止其他程序。
-- [真实整合验证、截图及完整操作录像](docs/integration/VERIFICATION.md)
+- 数据库：backend/data/contacts.sqlite3
+- 日志：.runtime/；这些本地文件不提交 Git。
 
-## 前端预览与协作材料
+手动启动及配置见 [前端说明](frontend/README.md)、[后端说明](backend/README.md)。仅预览前端时可打开 `?demo=1`，演示数据不代表真实后端结果。
 
-先按[后端运行说明](backend/README.md)在 `127.0.0.1:8000` 启动 API。前端分支及提交材料见[协作交接记录](docs/BACKEND_HANDOFF.md)。
+## 项目结构
 
-在项目根目录运行 `python -m http.server 8080 --bind 127.0.0.1`，或双击 `start-frontend.cmd`。
-
-- 真实接口模式：http://127.0.0.1:8080/frontend/
-- 前端演示模式：http://127.0.0.1:8080/frontend/?demo=1
-- [前端运行说明](frontend/README.md)
-- [前后端接口约定](docs/API_CONTRACT.md)
-- [博客协作框架：每节注明前端/后端所需材料](docs/BLOG_COLLABORATION_TEMPLATE.md)
-- [截图、视频与最终补交材料](docs/EVIDENCE.md)
-- [前端验证记录](docs/FRONTEND_VERIFICATION.md)
-
-真实接口模式使用 SQLite 持久化联系人。演示模式使用预置的虚构联系人，适合单独预览前端页面。
-
-## 目录
-
-- `frontend/`：前端页面与交互。
-- `backend/`：后端接口、数据存储及 Excel 处理。
-- [代码规范](docs/CODING_STANDARDS.md)
-- [协作流程与分工](docs/COLLABORATION.md)
-- [交付检查清单](docs/DELIVERY_CHECKLIST.md)
-
-## 功能目标
-
-- 清晰、可用的通讯录界面。
-- 收藏联系人并方便访问。
-- 同一联系人支持多项联系方式。
-- Excel 导入与导出：每个联系人一行，每类信息一列，保留全部关联信息。
-- 可选：部署到云服务器并提供访问地址。
-
-## 获取项目
-
-```sh
-git clone https://github.com/linblackchen-code/address-book.git
-cd address-book
+```text
+frontend/             页面、样式、交互及 HTTP 通信
+backend/              API、数据库、Excel 处理及测试
+deployment/ubuntu/    与计算器共用服务器的部署配置
+docs/submission/      本次整理的提交截图、云端录像与样例
+docs/integration/     本地真实联调证据
+docs/cloud/           公网 HTTP 验收及样例
+docs/screenshots/     早期前端演示/接口桩截图，保留开发记录
+tools/                浏览器验证、材料采集脚本
+start-local.*         Windows 启动入口
+stop-local.*          Windows 停止入口
 ```
 
-前端无需安装依赖或构建。后端依赖、数据库初始化和本地启动命令见[后端运行说明](backend/README.md)。
+接口规则见 [API_CONTRACT.md](docs/API_CONTRACT.md)，服务器更新见 [部署说明](deployment/ubuntu/README.md)。开发阶段的截图和录像保持原路径，最终博客优先使用 docs/submission/，避免混用旧界面或模拟数据。
 
-## 协作
+## 验证
 
-两位成员分别负责前端和后端，各自使用关联本人 GitHub 账号的 Git 身份提交，通过分支和 Pull Request 合并。成员姓名、接口及贡献比例待实际开发时填写。
+[后端验证](docs/backend/VERIFICATION.md) · [本地真实联调](docs/integration/VERIFICATION.md) · [公网验收](docs/cloud/VERIFICATION.md) · [最终材料说明](docs/submission/README.md)。
 
-作业博客各人单独发布，分别记录个人 PSP 和实际贡献。
+原生前端无需 npm 构建；浏览器采集脚本需要 Playwright，但不是用户运行应用的依赖。

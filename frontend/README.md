@@ -1,4 +1,4 @@
-# 知交 · 通讯录前端
+# 通讯录前端
 
 原生 HTML/CSS/JavaScript ES Modules + fetch，无 npm 构建依赖。
 
@@ -20,11 +20,11 @@ python -m http.server 8080 --bind 127.0.0.1
 
 联系人卡片与统计；新增/编辑/删除确认；收藏和特别关注筛选；姓名、备注及联系方式搜索；动态增删多类型、同类型多项联系方式；表单校验；Excel 上传/下载与结果反馈；加载、空白和失败状态；桌面和手机布局。用户内容通过 textContent 展示。
 
-数据存储和实际 Excel 处理由后端实现。前端 API 流程已用 HTTP 拦截桩检查，真实联调仍待完成。
+数据存储和实际 Excel 处理由后端实现。已完成本地真实联调和云端运行验证，最终材料见 ../docs/submission/README.md。HTTP 拦截桩检查仅作为开发阶段回归。
 
 ## 配置与文件
 
-[接口建议稿](../docs/API_CONTRACT.md)需由队友确认。config.js 本地默认连接同主机 8000 端口 /api，生产环境使用同源 /api。分开部署时调整 API_BASE 和后端 CORS。
+[最终接口约定](../docs/API_CONTRACT.md)与实际后端一致。config.js 本地默认连接同主机 8000 端口 /api，生产环境按页面路径使用同源 API，例如 /address-book/api。分开部署时调整 API_BASE 和后端 CORS。
 
 - index.html / styles.css：页面与响应式布局。
 - app.js：状态、DOM 渲染、表单及交互。
