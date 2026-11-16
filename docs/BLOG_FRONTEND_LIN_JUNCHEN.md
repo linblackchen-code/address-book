@@ -35,7 +35,7 @@
 
 ![新版通讯录桌面首页](submission/01-new-desktop.jpg)
 
-新版桌面首页和手机尺寸预览在本地连接真实后端，使用虚构联系人。下文的收藏、表单和 Excel 流程截图通过 SSH 隧道连接真实云服务采集，记录的是界面改版前的验收结果。
+新版桌面首页、手机预览及第 4 节的功能图均使用虚构联系人，在本地连接真实后端后采集。Excel 导出图展示实际工作簿中的内容。
 
 ## 2. 分工与贡献比例
 
@@ -82,7 +82,7 @@
 
 收藏筛选可以和搜索一起使用；联系人总数和收藏数根据实际列表更新。
 
-![特别关注筛选](submission/02-cloud-favorites.png)
+![新版特别关注列表](submission/02-new-favorites.jpg)
 
 ### 4.3 多种联系方式
 
@@ -90,7 +90,7 @@
 
 前端检查内容是否为空，并对邮箱进行基础格式校验；后端仍独立检查所有字段。数据由联系人表和联系方式表的一对多结构保存，顺序由 position 字段记录。
 
-![多个电话和邮箱的表单](submission/03-multiple-methods.png)
+![新版多联系方式表单，含两个电话和一个邮箱](submission/03-new-multiple-methods.jpg)
 
 ### 4.4 Excel 导入导出
 
@@ -100,11 +100,11 @@
 
 Excel 中每个联系人占一行、每类信息占一列，同类多个联系方式使用 JSON 字符串数组保存，保留电话前导零、+ 和中文。导出包含全部联系人，不受页面当前搜索条件限制。
 
-![实际导出内容预览](submission/07-excel-content.png)
+![实际导出工作簿的内容预览](submission/07-new-excel-export.jpg)
 
 上图是从真实下载的工作簿提取虚构样例后的内容预览，并非 Excel 软件窗口。[Excel 样例](submission/contacts-sample.xlsx)可下载打开。
 
-![真实云端导入成功](submission/04-cloud-import.png)
+![新版界面显示 Excel 导入成功](submission/04-new-import-success.jpg)
 
 ### 4.5 异常处理
 
@@ -112,7 +112,7 @@ api.js 集中处理网络连接失败和非成功 HTTP 状态，并兼容后端 
 
 前端校验用于及时反馈，不能代替后端校验。例如损坏文件即使扩展名为 .xlsx，后端仍会拒绝并返回错误，前端将错误显示给用户。
 
-![损坏工作簿的反馈](submission/05-cloud-invalid-file.png)
+![新版界面显示损坏工作簿的错误提示](submission/05-new-invalid-workbook.jpg)
 
 ## 5. Git 协作
 
