@@ -234,7 +234,7 @@ $("#import-file").addEventListener("change", async event => {
   try {
     const result = await api.importFile(file);
     if (!Number.isInteger(result?.imported) || result.imported < 0) throw new Error("导入响应格式不符，请重新连接确认数据，勿重复导入。");
-    await loadContacts(`成功导入 ${result.imported} 位联系人。`);
+    await loadContacts(typeof result.message === "string" ? result.message : `成功导入 ${result.imported} 位联系人。`);
   } catch (error) { feedback(error.message, "error"); }
   finally { $("#import-button").disabled = !state.loaded; }
 });
