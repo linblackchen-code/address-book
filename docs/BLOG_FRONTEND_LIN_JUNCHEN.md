@@ -33,9 +33,9 @@
 - [前端 PR #1](https://github.com/linblackchen-code/address-book/pull/1)、[后端 PR #2](https://github.com/linblackchen-code/address-book/pull/2)：均已合并。
 - GitHub Release：尚未发布，发布后补充版本链接。
 
-![真实云端通讯录](submission/01-cloud-desktop.png)
+![新版通讯录桌面首页](submission/01-new-desktop.jpg)
 
-功能截图通过 SSH 隧道连接同一真实云服务采集，没有使用模拟接口响应。截图只展示虚构验收样例，采集完成后清理这些样例，保留服务器原有联系人。
+新版桌面首页和手机尺寸预览在本地连接真实后端，使用虚构联系人。下文的收藏、表单和 Excel 流程截图通过 SSH 隧道连接真实云服务采集，记录的是界面改版前的验收结果。
 
 ## 2. 分工与贡献比例
 
@@ -74,7 +74,7 @@
 
 搜索在完整联系人列表上进行，匹配姓名、备注和联系方式。无联系人、没有搜索结果和无法连接服务分别显示相应提示，避免空白页面让用户无法判断状态。姓名和备注等用户内容通过 textContent 写入，避免被当作 HTML 执行。
 
-![手机布局](submission/06-cloud-mobile.png)
+![新版手机布局，390 像素宽度的浏览器预览](submission/06-new-mobile.jpg)
 
 ### 4.2 收藏联系人
 
