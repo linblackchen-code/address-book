@@ -7,7 +7,7 @@
 - [x] SQLite 持久化、错误反馈和手机布局验证。
 - [x] 阿里云部署，通讯录与计算器按路径及端口区分。
 - [x] [正式截图、最终运行视频及 Excel 样例](submission/README.md)。
-- [x] [前端个人英文稿](BLOG_FRONTEND_LIN_JUNCHEN.md)和[后端个人稿](BLOG_BACKEND_CHEN_ZIYUAN.md)。
+- [x] 两人的个人博客文稿已整理。
 - [x] 前端 CSDN 草稿的图片已上传，视频已审核通过并内嵌。
 
 ## 发布与课程提交时核对

@@ -6,6 +6,8 @@
 
 https://github.com/user-attachments/assets/916eb75a-4956-4b7d-a4cb-8b9b8fc34519
 
+[下载原始 MP4](address-book-demo.mp4)
+
 示例工作簿包含虚构联系人，可直接用于批量导入。[下载 Excel 示例工作簿](contacts-sample.xlsx)
 
 ## 界面截图
@@ -39,18 +41,12 @@ https://github.com/user-attachments/assets/916eb75a-4956-4b7d-a4cb-8b9b8fc34519
 <details>
 <summary>Git 提交与合并截图</summary>
 
-保留一组 Git/PR 历史配图，统计截止点以各博客正文及[贡献统计](../GIT_CONTRIBUTIONS.md)注明的快照为准。
+主分支提交记录截图对应 `main` 快照 `ce0bdcf`。
 
-![后端博客的提交历史](08-github-main-commits-latest.jpg)
+![GitHub 主分支提交历史](08-github-main-commits-latest.jpg)
 
 ![前端 PR #1 合并记录](09-github-frontend-pr.png)
 
 ![后端 PR #2 合并记录](10-github-backend-pr-latest.jpg)
 
 </details>
-
-## 文件说明
-
-[前端英文博客](../BLOG_FRONTEND_LIN_JUNCHEN.md) · [后端博客](../BLOG_BACKEND_CHEN_ZIYUAN.md)
-
-本目录保留 11 张正式截图、[最终 MP4](address-book-demo.mp4)和 Excel 样例。上方 GitHub 视频附件用于仓库页面内嵌播放，MP4 文件用于下载或重新上传。旧界面截图、前端阶段录像及重复导出副本不再放入当前版本；历史提交仍可追溯。

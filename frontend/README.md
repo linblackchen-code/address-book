@@ -2,6 +2,14 @@
 
 使用 HTML、CSS、JavaScript ES Modules 和 `fetch`。浏览器负责联系人表单、搜索、收藏筛选和导入导出的交互。SQLite 存储和 Excel 文件处理由后端提供。
 
+## 界面预览
+
+### 电脑端
+
+![电脑端通讯录首页，显示侧栏导航、联系人卡片和 Excel 操作](../docs/submission/01-new-desktop.jpg)
+
+### 手机端
+
 ![手机宽度下的通讯录显示顶部导航、搜索框和单列联系人卡片](../docs/submission/06-new-mobile.jpg)
 
 ## 启动
@@ -44,6 +52,4 @@ npx playwright install chromium ffmpeg
 node tools/frontend-check.cjs
 ```
 
-使用现有安装时，可通过 `PLAYWRIGHT_MODULE` 指定 Playwright 模块路径，用 `BROWSER_PATH` 指定 Edge 或 Chrome 路径。脚本覆盖演示模式和 HTTP 测试桩，结果、截图和录像保存在 `.runtime/frontend-check/`，不覆盖正式提交材料。使用真实后端联调时，可连续导入同一份样例，检查第二次没有新增记录，再导出工作簿核对联系人信息。
-
-[前端英文定稿](../docs/BLOG_FRONTEND_LIN_JUNCHEN.md) · [正式截图与视频](../docs/submission/README.md) · [验证记录](../docs/FRONTEND_VERIFICATION.md)。
+使用现有安装时，可通过 `PLAYWRIGHT_MODULE` 指定 Playwright 模块路径，用 `BROWSER_PATH` 指定 Edge 或 Chrome 路径。脚本覆盖演示模式和 HTTP 测试桩，结果、截图和录像保存在 `.runtime/frontend-check/`。使用真实后端联调时，可连续导入同一份样例，检查第二次没有新增记录，再导出工作簿核对联系人信息。
