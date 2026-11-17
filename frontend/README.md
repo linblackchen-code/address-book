@@ -1,44 +1,42 @@
 # 通讯录前端
 
-原生 HTML/CSS/JavaScript ES Modules + fetch，无 npm 构建依赖。
+使用 HTML、CSS、JavaScript ES Modules 和 `fetch`。浏览器负责联系人表单、搜索、收藏筛选和导入导出的交互。SQLite 存储和 Excel 文件处理由后端提供。
+
+![手机宽度下的通讯录显示顶部导航、搜索框和单列联系人卡片](../docs/submission/06-new-mobile.jpg)
 
 ## 启动
 
-在项目根目录运行：
+使用 Python 3.11 或更新版本，从仓库根目录启动静态服务器。
 
 ```sh
 python -m http.server 8080 --bind 127.0.0.1
 ```
 
-- 真实接口：http://127.0.0.1:8080/frontend/
-- 显式演示：http://127.0.0.1:8080/frontend/?demo=1
-- Windows 可双击 start-frontend.cmd。
+在 macOS 或 Linux 可使用 `python3`。Windows 也可运行 `start-frontend.cmd`，或双击仓库根目录的 `start-local.cmd` 同时启动前后端。
 
-使用现代浏览器，不要直接以 file:// 打开。演示数据仅存在本次页面内存，刷新后恢复；演示模式不解析或生成 Excel。真实接口不可用时显示错误，不会自动切换为模拟成功。
+| 模式 | 地址 | 数据来源 |
+| --- | --- | --- |
+| 本地联调 | `http://127.0.0.1:8080/frontend/` | 连接 8000 端口的 API，数据保存到 SQLite |
+| 界面预览 | `http://127.0.0.1:8080/frontend/?demo=1` | 使用浏览器内存中的虚构数据，刷新后恢复初始样例 |
 
-## 已完成
+完整 Excel 功能需要真实后端。API 不可用时，页面会显示错误。原生前端可直接由静态服务器提供，无需构建。
 
-联系人卡片与统计；新增/编辑/删除确认；收藏和特别关注筛选；姓名、备注及联系方式搜索；动态增删多类型、同类型多项联系方式；表单校验；Excel 上传/下载与结果反馈；加载、空白和失败状态；桌面和手机布局。用户内容通过 textContent 展示。
+## API 配置
 
-数据存储和实际 Excel 处理由后端实现。已完成本地真实联调和云端运行验证，最终材料见 ../docs/submission/README.md。HTTP 拦截桩检查仅作为开发阶段回归。
+本地页面默认调用同一主机的 `:8000/api`。部署时，`config.js` 按页面路径解析同源 API，例如 `/address-book/api`。前后端分开部署时，在 `config.js` 设置 `API_BASE`，在后端将页面来源加入 `ADDRESS_BOOK_CORS_ORIGINS`。
 
-## 配置与文件
+## 文件
 
-[最终接口约定](../docs/API_CONTRACT.md)与实际后端一致。config.js 本地默认连接同主机 8000 端口 /api，生产环境按页面路径使用同源 API，例如 /address-book/api。分开部署时调整 API_BASE 和后端 CORS。
+| 文件 | 用途 |
+| --- | --- |
+| `index.html` 与 `styles.css` | 页面结构与响应式布局 |
+| `app.js` | 联系人列表、表单、收藏与搜索交互 |
+| `api.js` | API 请求、错误处理、工作簿上传与下载 |
+| `config.js` 与 `demo-api.js` | API 地址、演示开关与样例数据 |
 
-- index.html / styles.css：页面与响应式布局。
-- app.js：状态、DOM 渲染、表单及交互。
-- api.js：HTTP、错误响应、FormData 上传、Blob 下载。
-- config.js：后端地址和显式演示开关。
-- demo-api.js：虚构样例及内存操作。
+## 浏览器检查
 
-导入限制 .xlsx、5 MiB，字段名 file；下载全部联系人，不受当前搜索影响。详见接口文档。
-
-## 验证
-
-[验证记录](../docs/FRONTEND_VERIFICATION.md)；[证据索引](../docs/EVIDENCE.md)；[博客框架](../docs/BLOG_COLLABORATION_TEMPLATE.md)。
-
-自动检查需要 Node.js、Playwright、浏览器和录屏依赖，不是网页运行依赖。在项目根目录另开终端：
+保持静态服务器运行，在另一个终端从仓库根目录执行以下命令。检查脚本需要 Node.js 和 Playwright。
 
 ```sh
 npm install --no-save --package-lock=false playwright
@@ -46,5 +44,4 @@ npx playwright install chromium ffmpeg
 node tools/frontend-check.cjs
 ```
 
-静态服务器应保持运行。已有依赖可用 PLAYWRIGHT_MODULE 指定 playwright 包路径，BROWSER_PATH 指定 Edge/Chrome。
-测试覆盖并重新生成前端演示截图、测试桩证据、验证记录及前端阶段录像；不能替代真实后端验收。
+使用现有安装时，可通过 `PLAYWRIGHT_MODULE` 指定 Playwright 模块路径，用 `BROWSER_PATH` 指定 Edge 或 Chrome 路径。脚本覆盖演示模式和 HTTP 测试桩，运行后会更新 `docs/FRONTEND_VERIFICATION.md` 及相关截图。使用真实后端联调时，可连续导入同一份样例，检查第二次没有新增记录，再导出工作簿核对联系人信息。

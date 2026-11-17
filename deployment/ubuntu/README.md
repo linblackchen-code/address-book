@@ -1,45 +1,43 @@
-# 阿里云 Ubuntu 部署：与计算器共用一台服务器
+# 在 Ubuntu 上部署通讯录
 
-2026-11-16 已实际部署。地址：
+Nginx 在 `/address-book/` 提供前端静态文件，并将 `/address-book/api/` 转发到监听 `127.0.0.1:8001` 的 FastAPI 服务。现有计算器沿用根路径、`/api/` 和本机 8000 端口。
 
-- 通讯录：http://47.114.63.69/address-book/
-- 通讯录 API 文档：http://47.114.63.69/address-book/docs
-- 计算器：http://47.114.63.69/
+## 服务和目录
 
-使用现有 Nginx 的 80 端口，以路径区分项目。服务器不需要开放新端口；通讯录后端只监听 127.0.0.1:8001，计算器仍使用 127.0.0.1:8000。
-
-## 服务器布局
-
-| 内容 | 路径/名称 |
+| 用途 | 路径或服务名 |
 | --- | --- |
-| 通讯录源码及虚拟环境 | /home/ecs-user/address-book |
-| 公开的前端静态文件 | /var/www/address-book |
-| 独立 SQLite 数据库 | /var/lib/address-book/contacts.sqlite3 |
-| systemd 服务 | address-book-api |
-| 通讯录 Nginx 片段 | /etc/nginx/snippets/address-book.conf |
-| 现有站点配置 | /etc/nginx/sites-available/default，server 内新增 include |
+| 源码与虚拟环境 | `/home/ecs-user/address-book` |
+| 前端静态文件 | `/var/www/address-book` |
+| SQLite 数据文件 | `/var/lib/address-book/contacts.sqlite3` |
+| systemd 服务 | `address-book-api` |
+| Nginx 路由片段 | `/etc/nginx/snippets/address-book.conf` |
+| Nginx 站点配置 | `/etc/nginx/sites-available/default` |
 
-原计算器站点的 root 和 /api/ 转发保留。通讯录 /address-book/api/ 转发到 8001 的 /api/，前端 config.js 按网页路径构建同源 API 地址；本地运行仍连接 8000。
-后端以 --root-path /address-book 启动，Swagger 的 schema 地址和公网前缀一致。
+`address-book-api.service` 通过 `--root-path /address-book` 设置 OpenAPI 的公网路径前缀。`address-book.nginx.conf` 为通讯录导入请求设置 `6m` 请求体上限，后端仍按 5 MiB 限制上传文件。
 
-## 首次安装与更新
+## 安装与更新
 
-本机使用现有 SSH 连接，密钥保留在用户的 .ssh 目录，不上传仓库。将当前 main 的源码打包并上传，不能包含 .venv、真实数据库或密钥。
+以下步骤适用于已有计算器站点的服务器。需要现有 SSH 访问、sudo 权限、Python 3.11 或更新版本及 `venv`、`unzip` 和 `curl`。迁移到其他服务器时，按实际用户、路径和站点配置修改 `install.sh` 及服务文件。
+
+在本地仓库归档要部署的 `main`，再通过 SSH 上传。若需要指定密钥文件，给 `scp` 和 `ssh` 添加 `-i` 参数。
 
 ```sh
 git archive --format=zip --output=address-book-deploy.zip main
-scp -i YOUR_SSH_KEY address-book-deploy.zip ecs-user@47.114.63.69:/home/ecs-user/address-book-deploy.zip
-ssh -i YOUR_SSH_KEY ecs-user@47.114.63.69
+scp address-book-deploy.zip ecs-user@47.114.63.69:/home/ecs-user/
+ssh ecs-user@47.114.63.69
+```
+
+在服务器上执行以下命令。
+
+```sh
 mkdir -p /home/ecs-user/address-book
 unzip -oq /home/ecs-user/address-book-deploy.zip -d /home/ecs-user/address-book
 bash /home/ecs-user/address-book/deployment/ubuntu/install.sh
 ```
 
-脚本安装依赖、复制前端、重启通讯录服务，并备份现有 Nginx 站点配置后插入限定路径的片段。nginx -t 失败时恢复配置；验证成功后 reload，不停止计算器服务。数据库独立存放，更新源码不会覆盖。
-脚本为当前 ecs-user 和路径编写；换服务器时先修改路径、用户和站点配置检查。
-以后更新计算器时，如果其部署步骤会整体覆盖 Nginx default 文件，应保留通讯录的 include 行，否则通讯录路径会失效。
+脚本安装依赖、更新静态文件并启动通讯录 API。它备份 Nginx 的站点文件，添加通讯录的 `include`，通过 `nginx -t` 后重载 Nginx。若配置校验失败，脚本会恢复备份。SQLite 数据位于源码目录之外，更新包不会覆盖数据库。
 
-## 验证与维护
+## 验证与排查
 
 ```sh
 sudo systemctl is-active address-book-api calculator-api nginx
@@ -49,12 +47,4 @@ sudo journalctl -u address-book-api -n 50 --no-pager
 sudo nginx -t
 ```
 
-Excel API 单独设置 6m 请求体限制，后端仍限制文件 5 MiB；计算器原来的请求限制保留。
-页面是共享通讯录，当前没有账号登录或按用户隔离。
-
-## 回退本次站点挂载
-
-从 /etc/nginx/sites-available/default 移除 `include /etc/nginx/snippets/address-book.conf;`，运行 nginx -t 后 reload，然后停用 address-book-api。不要删除数据库。
-首次修改前的配置备份保存在 /etc/nginx/sites-available/default.address-book-backup-时间戳。若之后计算器配置有变化，不要直接用旧备份覆盖新配置。
-
-公网接口验证结果见 [docs/cloud/VERIFICATION.md](../../docs/cloud/VERIFICATION.md)。博客需填写本次真实公网地址，最终 PSP 和贡献比例仍由双方如实补充。
+更新计算器站点配置时，保留现有 `include /etc/nginx/snippets/address-book.conf;` 以继续提供通讯录。要撤下通讯录，先从站点配置移除该行，运行 `sudo nginx -t`，通过后重载 Nginx，再停用 `address-book-api`。保留 SQLite 文件以便恢复。安装时创建的站点备份可用于对照对应时间的配置。

@@ -1,63 +1,65 @@
-# 通讯录 · Address Book
+# 通讯录 | Address Book
 
-Software Engineering (FZU–MU) 极限编程作业。团队 **BLGNB**：林俊晨（前端，50%）、陈子元（后端，50%）。前后端已合并到 `main`，本地联调与阿里云部署均已完成。
+一个支持收藏、多种联系方式和 Excel 批量导入导出的网页通讯录。前端使用原生 HTML、CSS 和 JavaScript，后端使用 FastAPI，联系人存储在 SQLite。
 
-## 在线体验
+[在线体验](http://47.114.63.69/address-book/)
 
-- [通讯录](http://47.114.63.69/address-book/)
-- [API 文档](http://47.114.63.69/address-book/docs)
-- [代码规范](docs/CODING_STANDARDS.md)
+![通讯录桌面首页，显示联系人卡片、收藏和 Excel 操作](docs/submission/01-new-desktop.jpg)
 
-## 作业提交入口
+运行演示（2 分 30 秒）
 
-[林俊晨的前端博客](docs/BLOG_FRONTEND_LIN_JUNCHEN.md) · [陈子元的后端博客](docs/BLOG_BACKEND_CHEN_ZIYUAN.md)
+https://github.com/user-attachments/assets/916eb75a-4956-4b7d-a4cb-8b9b8fc34519
 
-[最终提交指南](docs/SUBMISSION_GUIDE.md) · [通用博客框架](docs/BLOG_COLLABORATION_TEMPLATE.md)。
+## 功能
 
-| 材料 | 入口 |
-| --- | --- |
-| 最终截图、云端录像、Excel 样例 | [材料索引](docs/submission/README.md) |
-| 实现思路与数据模型 | [IMPLEMENTATION.md](docs/IMPLEMENTATION.md) |
-| Git 提交统计与合并记录 | [GIT_CONTRIBUTIONS.md](docs/GIT_CONTRIBUTIONS.md) |
-| 发布版本说明草稿 | [RELEASE_NOTES.md](docs/RELEASE_NOTES.md) |
-| 交付逐项检查 | [DELIVERY_CHECKLIST.md](docs/DELIVERY_CHECKLIST.md) |
+- 新建、编辑、删除和搜索联系人，按收藏状态筛选。
+- 为同一联系人保存多项电话、邮箱、社交账号和地址。
+- 导入 `.xlsx` 文件，校验整批数据并跳过重复联系人。导出包含全部联系人，并保留电话号码中的前导零和加号。
+- 支持桌面和手机布局。联系人及收藏状态在页面刷新或服务重启后仍可读取。
 
-## 已实现功能
+当前应用是共享通讯录，访问者操作同一份数据。在线体验可用虚构联系人。
 
-联系人新建、编辑、删除与搜索；收藏及特别关注筛选；一个联系人多种、同类型多项联系方式；Excel 导入导出及重复记录跳过；手机布局和错误反馈。数据保存在后端 SQLite，刷新或重启后保留。
+## 本地运行
 
-前端使用 HTML/CSS/JavaScript + fetch；后端使用 FastAPI、Pydantic、Uvicorn、SQLite 和 openpyxl。当前为共享通讯录，没有账号登录及用户数据隔离。
+需要 Python 3.11 或更新版本。先从 GitHub 克隆仓库并进入项目目录。
 
-## Windows 本地运行
+```sh
+git clone https://github.com/linblackchen-code/address-book.git
+cd address-book
+```
 
-安装 Python 3.11+，Clone 本仓库后双击 `start-local.cmd`。首次会安装依赖并启动前后端。双击 `stop-local.cmd` 停止，数据保留。
+### Windows 快速启动
 
-- 页面：http://127.0.0.1:8080/frontend/
-- API 文档：http://127.0.0.1:8000/docs
-- 数据库：backend/data/contacts.sqlite3
-- 日志：.runtime/；这些本地文件不提交 Git。
+双击 `start-local.cmd`，脚本会创建虚拟环境、安装依赖并启动前后端。启动后打开[本地通讯录](http://127.0.0.1:8080/frontend/)，Swagger 文档地址是 `http://127.0.0.1:8000/docs`。
 
-手动启动及配置见 [前端说明](frontend/README.md)、[后端说明](backend/README.md)。仅预览前端时可打开 `?demo=1`，演示数据不代表真实后端结果。
+双击 `stop-local.cmd` 停止服务。默认数据库位于 `backend/data/contacts.sqlite3`，启动日志位于 `.runtime/`。
+
+### macOS 或 Linux 手动启动
+
+在仓库根目录启动 API。
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r backend/requirements.txt
+.venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
+```
+
+在另一个终端从仓库根目录运行以下命令，浏览器访问 `http://127.0.0.1:8080/frontend/`。
+
+```sh
+python3 -m http.server 8080 --bind 127.0.0.1
+```
 
 ## 项目结构
 
-```text
-frontend/             页面、样式、交互及 HTTP 通信
-backend/              API、数据库、Excel 处理及测试
-deployment/ubuntu/    与计算器共用服务器的部署配置
-docs/submission/      本次整理的提交截图、云端录像与样例
-docs/integration/     本地真实联调证据
-docs/cloud/           公网 HTTP 验收及样例
-docs/screenshots/     早期前端演示/接口桩截图，保留开发记录
-tools/                浏览器验证、材料采集脚本
-start-local.*         Windows 启动入口
-stop-local.*          Windows 停止入口
-```
+| 目录 | 内容 |
+| --- | --- |
+| `frontend/` | 页面、样式和浏览器交互 |
+| `backend/` | API、输入校验、SQLite、Excel 处理与回归测试 |
+| `deployment/ubuntu/` | Ubuntu 部署步骤、Nginx 路由和 systemd 服务 |
+| `docs/` | 接口约定、设计说明、验证记录与演示材料 |
+| `tools/` | 浏览器检查与演示录制脚本 |
 
-接口规则见 [API_CONTRACT.md](docs/API_CONTRACT.md)，服务器更新见 [部署说明](deployment/ubuntu/README.md)。开发阶段的截图和录像保持原路径，最终博客优先使用 docs/submission/，避免混用旧界面或模拟数据。
+[更多截图与 Excel 样例](docs/submission/README.md) · [代码规范](docs/CODING_STANDARDS.md)
 
-## 验证
-
-[后端验证](docs/backend/VERIFICATION.md) · [本地真实联调](docs/integration/VERIFICATION.md) · [公网验收](docs/cloud/VERIFICATION.md) · [最终材料说明](docs/submission/README.md)。
-
-原生前端无需 npm 构建；浏览器采集脚本需要 Playwright，但不是用户运行应用的依赖。
+项目由 BLGNB 团队的林俊晨和陈子元完成，课程为 Software Engineering (FZU–MU)。
