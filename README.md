@@ -62,4 +62,13 @@ python3 -m http.server 8080 --bind 127.0.0.1
 
 [更多截图与 Excel 样例](docs/submission/README.md) · [代码规范](docs/CODING_STANDARDS.md)
 
-项目由 BLGNB 团队的林俊晨和陈子元完成，课程为 Software Engineering (FZU–MU)。
+项目由 BLGNB 团队完成，课程为 Software Engineering (FZU–MU)。林俊晨（832401117）负责前端，陈子元（832401108）负责后端，贡献比例各 50%；双方共同完成接口约定、联调和共同博客内容。
+
+## 博客与交付文档
+
+- [林俊晨：前端英文定稿](docs/BLOG_FRONTEND_LIN_JUNCHEN.md) · [陈子元：后端开发记录](docs/BLOG_BACKEND_CHEN_ZIYUAN.md)
+- [最终提交指南](docs/SUBMISSION_GUIDE.md) · [交付检查清单](docs/DELIVERY_CHECKLIST.md) · [版本说明](docs/RELEASE_NOTES.md)
+- [接口约定](docs/API_CONTRACT.md) · [实现说明](docs/IMPLEMENTATION.md) · [Git 贡献统计](docs/GIT_CONTRIBUTIONS.md)
+- [验证材料索引](docs/EVIDENCE.md)
+
+正式截图、运行视频和样例统一放在 docs/submission/。浏览器检查工具产生的临时文件保存在被 Git 忽略的 .runtime/，不覆盖正式材料。已合并分支的开发提交和 PR 记录继续保留。

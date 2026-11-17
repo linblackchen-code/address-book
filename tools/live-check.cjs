@@ -7,7 +7,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const root = path.resolve(__dirname, '..');
 const baseUrl = process.env.ADDRESS_BOOK_BASE_URL || 'http://127.0.0.1:8080/frontend/';
 const cloud = Boolean(process.env.ADDRESS_BOOK_BASE_URL);
-const output = path.join(root, 'docs', cloud ? 'cloud' : 'integration');
+const output = path.join(root, '.runtime', cloud ? 'cloud-check' : 'integration-check');
 const runtime = path.join(root, '.runtime');
 fs.mkdirSync(output, { recursive: true });
 const python = path.join(root, '.venv', 'Scripts', 'python.exe');

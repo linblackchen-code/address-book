@@ -7,7 +7,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const root = path.resolve(__dirname, '..');
 const base = process.env.ADDRESS_BOOK_EVIDENCE_URL || 'http://127.0.0.2:19080/address-book/';
 const api = new URL('./api/contacts', base).href;
-const out = path.join(root, 'docs', 'submission');
+const out = path.join(root, '.runtime', 'submission-capture');
 const temp = path.join(root, '.runtime');
 fs.mkdirSync(out, { recursive: true });
 const python = path.join(root, '.venv', 'Scripts', 'python.exe');

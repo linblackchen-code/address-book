@@ -9,4 +9,4 @@
 - PASS: Corrupt file rejected without partial writes; UI delete removes real database record
 - PASS: Live mobile layout and no browser JavaScript errors
 
-后端 6 项自动回归测试亦通过。截图及 contacts-export.xlsx 来自本次真实服务；full-stack-demo.webm 是本次浏览器操作录像，包含实际服务重启等待过程，无配音。云部署、个人 PSP 和最终博客仍需另行完成。
+后端 6 项自动回归测试亦通过。本记录保留当时的验证日期与结果；阶段截图、录像和导出副本不再作为当前交付材料。新版界面、最终运行视频和 Excel 样例统一见[正式材料](../submission/README.md)。后续云部署结果见[公网验收](../cloud/VERIFICATION.md)。

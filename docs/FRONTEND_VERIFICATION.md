@@ -1,21 +1,9 @@
 # 前端验证记录
 
-验证日期：2026-11-15。浏览器：本机 Chromium / Edge，桌面 1440×1000、手机 390×844。
+早期检查日期：2026-11-15。浏览器为 Chromium / Edge，覆盖桌面与 390 像素手机布局。
 
-范围：显式前端演示和浏览器 HTTP 拦截桩；未启动或实现后端。测试桩不解析 Excel，导出返回预先生成的有效工作簿夹具，因此不能证明后端解析、数据库持久化或真实端到端正确性。
+当时通过了联系人增删改查、搜索、收藏、多联系方式、表单校验、HTTP 错误恢复、上传边界、夹具文件下载及浏览器错误检查。该轮使用显式演示数据与 HTTP 拦截桩，不代表真实后端或 Excel 解析已通过。
 
-- PASS: Explicit demo: list, search, favorites, multiple methods, create/edit/delete and honest Excel boundary
-- PASS: 390px mobile layout and contact dialog have no horizontal overflow
-- PASS: Unavailable API shows error, never silently substitutes demo contacts
-- PASS: HTTP contract: explicit favorite state, error recovery and reload using test fixture state
-- PASS: HTTP create/update/delete, form validation, server validation messages and safe text rendering
-- PASS: HTTP Excel: multipart file upload, type/size checks, repeated file choice, rejected import, success refresh, fixture-byte download and invalid MIME rejection
-- PASS: Malformed API list fails visibly instead of displaying false data
-- PASS: No browser JavaScript errors
-- PASS: Recorded labeled frontend-only demo (not the required final full-stack video)
+后续已完成[真实前后端联调](integration/VERIFICATION.md)及[公网验收](cloud/VERIFICATION.md)，最终界面与运行视频见[正式材料](submission/README.md)。早期界面截图和前端阶段录像不再作为当前交付材料。
 
-真实后端接入后必须重新验证：接口一致性、CORS、数据库重启后持久化、Excel 多值与前导零往返、无效文件事务处理，并替换接口桩截图，录制完整运行视频。
-
-## 页面文案简化
-
-按浏览器标注将左上角改为“通讯录”，删除标题上下说明、侧栏宣传文字、三张统计卡说明、页脚及课程小字。重新运行现有前端检查并更新截图、阶段录像；补查 996px 和 390px 布局、弹窗、标注文案移除及浏览器错误，均通过。
+重新检查前端：按[前端说明](../frontend/README.md)运行 tools/frontend-check.cjs，结果写入 .runtime/frontend-check/；正式截图与视频保持不变。

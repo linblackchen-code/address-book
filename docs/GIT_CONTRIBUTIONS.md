@@ -1,40 +1,21 @@
 # Git 提交与贡献记录
 
-统计日期：2026-11-16；快照为 main 的 62dcd434e6ad7592798b6fd28ea08550985d6fde。本轮材料整理的提交尚不在此快照内，最终博客可以明确使用此快照，或发布前更新到最新 main。
+统计快照：[main@a500e10408999faa19557c919d77726db9e16366](https://github.com/linblackchen-code/address-book/commits/a500e10408999faa19557c919d77726db9e16366/)，日期 2026-11-17。统计按 GitHub 关联账号归并；此后的提交不包含在该快照内。
 
-| GitHub 账号 | 全部提交（含 merge） | 非 merge 提交 |
-| --- | ---: | ---: |
-| linblackchen-code | 12 | 10 |
-| josephchen9jo-coder | 2 | 2 |
-| 合计 | 14 | 12 |
+| 成员 | GitHub 账号 | 全部提交（含 merge） | 非 merge 提交 |
+| --- | --- | ---: | ---: |
+| 林俊晨 | linblackchen-code | 15 | 12 |
+| 陈子元 | josephchen9jo-coder | 7 | 7 |
+| 合计 | | 22 | 19 |
 
-同一前端账号在 Git 中显示过 Junchen Lin 和 linblackchen-code，按已关联身份归并。非 merge 提交仍包含初始化、文档、测试和部署，不等于纯功能编码次数；提交次数不代表贡献比例。后端 2 次真实提交已包含功能实现和验证，作业要求的是仓库总计至少 3 次，并未要求每人至少 3 次。
+非 merge 提交也包括初始化、测试、文档和部署，不能等同于纯功能编码次数。同一账号可能关联不同作者显示名称，不能仅按显示名拆分统计。提交次数用于说明开发过程，不决定贡献比例；BLGNB 团队确认前后端各 50%，共同联调和共同博客内容包含在各自比例中。
 
-团队 BLGNB：linblackchen-code 对应林俊晨（前端），josephchen9jo-coder 对应陈子元（后端），贡献比例各 50%。比例由团队确认，不按提交次数换算。
+## 已合并 PR
 
-## PR
+- [前端 PR #1](https://github.com/linblackchen-code/address-book/pull/1)
+- [后端 PR #2](https://github.com/linblackchen-code/address-book/pull/2)
+- [界面改版 PR #3](https://github.com/linblackchen-code/address-book/pull/3)
 
-- [前端 PR #1](https://github.com/linblackchen-code/address-book/pull/1)：已合并。
-- [后端 PR #2](https://github.com/linblackchen-code/address-book/pull/2)：已合并。
-- [真实 GitHub 截图](submission/README.md)。
+[正式 Git/PR 配图](submission/README.md)。截图记录其采集时的历史页面；统计截止点以各博客正文为准，不把快照后的提交混入原表。
 
-## 快照提交清单
-
-| 提交 | 账号 | 类型 | 内容 |
-| --- | --- | --- | --- |
-| [62dcd43](https://github.com/linblackchen-code/address-book/commit/62dcd43) | linblackchen-code | 非 merge | feat(deploy): host address book alongside calculator on Alibaba Cloud |
-| [87c420a](https://github.com/linblackchen-code/address-book/commit/87c420a) | linblackchen-code | merge | Merge pull request #2 from linblackchen-code/feat/backend |
-| [8894b4d](https://github.com/linblackchen-code/address-book/commit/8894b4d) | linblackchen-code | merge | Merge pull request #1 from linblackchen-code/feat/frontend |
-| [9e86257](https://github.com/linblackchen-code/address-book/commit/9e86257) | linblackchen-code | 非 merge | fix(integration): retain latest UI and verify full-stack local startup |
-| [e6d1980](https://github.com/linblackchen-code/address-book/commit/e6d1980) | josephchen9jo-coder | 非 merge | docs(backend): capture live integration verification |
-| [8def976](https://github.com/linblackchen-code/address-book/commit/8def976) | josephchen9jo-coder | 非 merge | feat(backend): implement contacts and Excel API |
-| [3134a15](https://github.com/linblackchen-code/address-book/commit/3134a15) | linblackchen-code | 非 merge | style(frontend): simplify title and remove annotated captions |
-| [03dcf36](https://github.com/linblackchen-code/address-book/commit/03dcf36) | linblackchen-code | 非 merge | docs: clarify backend onboarding integration and submission handoff |
-| [ba79d67](https://github.com/linblackchen-code/address-book/commit/ba79d67) | linblackchen-code | 非 merge | docs: archive actual GitHub commit screenshot and PR references |
-| [f939cc1](https://github.com/linblackchen-code/address-book/commit/f939cc1) | linblackchen-code | 非 merge | test(frontend): add browser checks screenshots demo video and blog framework |
-| [9de73fe](https://github.com/linblackchen-code/address-book/commit/9de73fe) | linblackchen-code | 非 merge | feat(frontend): implement contacts favorites forms and Excel API flows |
-| [eaf9f21](https://github.com/linblackchen-code/address-book/commit/eaf9f21) | linblackchen-code | 非 merge | feat(frontend): add responsive contact layout and API contract |
-| [1bee529](https://github.com/linblackchen-code/address-book/commit/1bee529) | linblackchen-code | 非 merge | chore: initialize frontend backend structure and collaboration docs |
-| [ce45cfa](https://github.com/linblackchen-code/address-book/commit/ce45cfa) | linblackchen-code | 非 merge | Initial commit |
-
-最终提交前可运行 git log main 与 git shortlog -sne main 核对；同一账号显示的不同作者名称须合并统计，不能重复认定为两名成员。
+功能分支完成合并后可以删除分支入口，原始提交和合并记录仍在 main 历史及 PR 中保留。后续开发从最新 main 建立新分支。

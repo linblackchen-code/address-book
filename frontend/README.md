@@ -44,4 +44,6 @@ npx playwright install chromium ffmpeg
 node tools/frontend-check.cjs
 ```
 
-使用现有安装时，可通过 `PLAYWRIGHT_MODULE` 指定 Playwright 模块路径，用 `BROWSER_PATH` 指定 Edge 或 Chrome 路径。脚本覆盖演示模式和 HTTP 测试桩，运行后会更新 `docs/FRONTEND_VERIFICATION.md` 及相关截图。使用真实后端联调时，可连续导入同一份样例，检查第二次没有新增记录，再导出工作簿核对联系人信息。
+使用现有安装时，可通过 `PLAYWRIGHT_MODULE` 指定 Playwright 模块路径，用 `BROWSER_PATH` 指定 Edge 或 Chrome 路径。脚本覆盖演示模式和 HTTP 测试桩，结果、截图和录像保存在 `.runtime/frontend-check/`，不覆盖正式提交材料。使用真实后端联调时，可连续导入同一份样例，检查第二次没有新增记录，再导出工作簿核对联系人信息。
+
+[前端英文定稿](../docs/BLOG_FRONTEND_LIN_JUNCHEN.md) · [正式截图与视频](../docs/submission/README.md) · [验证记录](../docs/FRONTEND_VERIFICATION.md)。
