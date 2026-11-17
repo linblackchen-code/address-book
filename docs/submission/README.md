@@ -50,3 +50,14 @@ https://github.com/user-attachments/assets/916eb75a-4956-4b7d-a4cb-8b9b8fc34519
 ![后端 PR #2 合并记录](10-github-backend-pr-latest.jpg)
 
 </details>
+
+## 验证记录
+
+| 记录 | 验证范围 |
+| --- | --- |
+| [前端检查](../FRONTEND_VERIFICATION.md) | 界面交互和 HTTP 测试桩 |
+| [后端回归](../backend/VERIFICATION.md) | 真实 API、SQLite 和 Excel |
+| [本地联调](../integration/VERIFICATION.md) | 浏览器操作和服务重启后的持久化 |
+| [公网验收](../cloud/VERIFICATION.md) | 阿里云接口、部署隔离和持久化 |
+
+自动检查使用 `docs/fixtures/contacts-template.xlsx` 作为测试工作簿，生成的文件存放在 `.runtime/`。

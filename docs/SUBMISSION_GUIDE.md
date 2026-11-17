@@ -1,27 +1,18 @@
 # 最终提交指南
 
-课程截止：**2026-11-17 23:59（北京时间）**。
+课程截止时间为 **2026-11-17 23:59（北京时间）**。
 
-## 提交内容
+## 项目材料
 
-- 项目仓库：https://github.com/linblackchen-code/address-book
-- 在线应用：http://47.114.63.69/address-book/
-- [代码规范](CODING_STANDARDS.md)、[Git 贡献统计](GIT_CONTRIBUTIONS.md)及双方 PR 记录。
-- [正式截图、运行视频和 Excel 样例](submission/README.md)。
-- 两人分别发布个人博客，并分别在课程页面提交自己的博客链接。
+- [GitHub 仓库](https://github.com/linblackchen-code/address-book)和[在线通讯录](http://47.114.63.69/address-book/)。
+- [代码规范](CODING_STANDARDS.md)和[团队分工、提交与 PR 记录](GIT_CONTRIBUTIONS.md)。
+- [正式截图、运行演示、Excel 样例和验证记录](submission/README.md)。
 
-## 个人博客
+## 提交前检查
 
-项目介绍、架构、截图和运行视频可以共用；个人工作、PSP 与总结各自填写。团队 BLGNB，前后端贡献各 50%，共同联调和共同博客内容包含在各自比例中。时间与提交统计保留正文注明的口径及截止快照。
-
-前端 CSDN 草稿已上传图片并插入审核通过的内嵌视频。
-
-## 发布检查
-
-1. 检查博客标题、姓名学号、作业说明表、目录、工作说明、PSP、贡献比例、总结与参考资料。
-2. 发布前核对截图清晰度、视频播放、仓库和公网链接，并检查发布后的目录跳转。
-3. 发布 GitHub Release，将目标设为最终 main；[版本说明](RELEASE_NOTES.md)可用作正文。
-4. 两人分别发布 CSDN 博客，并在截止前提交各自的课程链接。仓库中的稿件不代表已发布或已提交课程。
-5. 如课程另行指定起始仓库，按要求核对 Fork；本项目为新建仓库，不描述为已 Fork。
-
-作业说明未要求另交 Word/PDF、PPT 或 ZIP；这些文件不能替代代码仓库与个人博客。
+- [x] 前后端已合入 `main`，联系人管理、收藏、多项联系方式和 Excel 导入导出已验收。
+- [x] 已验证 SQLite 持久化、错误反馈、手机布局及阿里云部署。
+- [ ] 确认两篇个人博客各自包含课程说明、目录、个人工作、贡献比例、PSP 和总结。打开发布后的页面，检查图片、视频、目录和项目链接。
+- [ ] 将 GitHub Release 指向本次交付的 `main` 提交。[版本说明](RELEASE_NOTES.md)
+- [ ] 两人在[课程作业页面](https://bbs.csdn.net/topics/620593436)分别提交各自的 CSDN 博客链接。
+- [ ] 如课程另行指定了起始仓库，核对对应的 Fork 要求。
